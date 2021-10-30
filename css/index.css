@@ -227,7 +227,7 @@ iframe {
   font-size: 1.2rem;
   margin: 5vh;
   height: fit-content;
-  align-self: center; }
+  text-align: center; }
 
 /*Nosotros*/
 form fieldset {
