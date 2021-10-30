@@ -1,0 +1,42 @@
+* {
+    Margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+ 
+ol{
+    list-style-type: none;
+    list-style-position: inside;
+   }
+
+ul{
+    list-style-type: none;
+    overflow: hidden;
+}
+
+/* Variables */
+
+$title-font: bold italic 2rem 'Open Sans', sans-serif;
+$ISVblue:#004086;
+
+/* Maps y Bucles */
+
+$redes: (
+        twitter: invert(61%) sepia(83%) saturate(1549%) hue-rotate(179deg) brightness(100%) contrast(87%),
+        facebook:  invert(32%) sepia(9%) saturate(3194%) hue-rotate(183deg) brightness(99%) contrast(96%),
+        instagram: invert(24%) sepia(59%) saturate(3452%) hue-rotate(265deg) brightness(80%) contrast(80%),
+        linkedin: invert(21%) sepia(86%) saturate(4345%) hue-rotate(187deg) brightness(95%) contrast(101%),
+); 
+
+@each $red, $color in $redes {
+    .#{$red}{
+        transition: all 1s;
+    }
+    .#{$red}:hover {
+        filter: $color;
+    }
+ }
+ 
+
+/*Mixins*/
+

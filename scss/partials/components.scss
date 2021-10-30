@@ -1,0 +1,190 @@
+/*Materiales y Productos*/
+table{
+    animation: fadeIn ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards; 
+}
+
+td ol {
+    list-style: decimal;
+    list-style-position: inside;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 auto;
+    overflow: hidden;
+    div {
+        width:25%;
+        min-width: 216px;
+        padding:10px;
+        flex: 1 0 auto;
+    }
+    
+    img {
+        width: 100%;
+        max-width: 196px;
+        max-height: 196px;
+        flex-shrink: 0;
+    }
+
+    .products__product{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        animation: fadeInAnimation ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+}
+
+/*Servicios*/
+
+.servicio{
+    padding: 10px 0;
+    margin:40px 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 30px;
+    width: 100%;
+    justify-items: start;
+    align-items: start;
+    justify-content: center;
+
+    
+
+    .head3{
+        grid-area: h3;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        padding: 20px 0;
+        font-style: italic;
+        font-weight: bold;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    .par{
+        grid-area: par;
+        min-width: 0px;
+        animation: fadeIn ease 1.5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        padding: 1.5rem;
+    }
+
+    .servicio__imagen{
+        grid-area: imagen;
+        width: 70%;
+        height: auto;
+        align-self: center;
+        justify-self: center;
+        animation: fadeInAnimation ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+}
+
+/*Características*/
+
+.caracteristicas{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.wrap {
+    order:2;
+    flex-basis: 0;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 120vh;
+    min-width: 411px;
+    display: flex;
+    flex-direction: column;
+}
+
+iframe{
+    width: 100%;
+    height: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+#frame{
+    order:2;
+    flex-basis: 0;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    min-height: 150vh;
+    min-width: 0vh;
+    max-width: 90vw;
+    width: 100%;
+}
+
+@media screen and (max-width: 855px) {
+    #frame{
+        display: none;
+    }
+}
+
+.btngroup{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.para {
+    font-size: 1.2rem;
+    margin: 5vh;
+    height:fit-content;
+    text-align: center;
+}
+
+/*Nosotros*/
+
+form fieldset{
+    padding: 1rem 2rem;
+    background-image: url(../Images/logoISV.png);
+    background-repeat: repeat;
+    background-size: 40px;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    legend{
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+
+    .btn-primary{
+        background-color: $ISVblue;
+        color: honeydew;
+    }
+
+    .btn-secondary{
+        background-color:gray;
+        color: honeydew;
+    }
+}
+
+.nosotros{
+    p{
+        animation: fadeIn ease 1.5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+}
+

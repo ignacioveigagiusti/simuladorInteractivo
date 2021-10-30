@@ -1,0 +1,142 @@
+/*Media Queries*/
+
+@media screen and (max-width: 275px) {
+     .header__pagetitle{
+         font-size: 5vw;
+     }
+}
+
+@media screen and (max-width: 410px) {
+    select{
+        width: 50vw;
+    }
+
+    .products {
+
+        div {
+            width:100%;
+            min-width: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .table{
+        
+        .table__hide{
+            display: none;
+        }
+    }
+    
+    section {
+        padding: 12px 0;
+    }
+    
+    article{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 655px) and (max-width: 768px) {
+    .servicio{
+        display: flex;
+        flex-direction: column;
+        min-width: 30px;
+        width: 100%;
+    }
+
+    .servicio .par{
+        min-width: 0;
+    }
+
+    .servicio .servicio__imagen {
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px){
+    .navbar-expand-md .navbar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    h1{
+        font-size: 2em;    
+    }
+
+    h2{
+        font-size: 1.75rem;
+        text-align: start;    
+    }
+
+    h3{
+        font-size: 1.5rem;
+    }
+
+    .servicio{
+        .head3{
+            font-size: 1.5rem;
+        }
+        .servicio__imagen {
+            width: 100%;
+        }
+    }
+
+    .header{
+        grid-template-columns: 100px auto; 
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 'logo pagetitle'
+                            'logo navbar';
+        gap: 1vw;
+        .header__pagetitle{
+            flex-direction: row;
+        }
+    }
+
+    .indexsection{
+        
+        
+        h2{
+            text-align: center;    
+        }
+    }
+
+    .indexline {
+        display: grid;
+        grid-template-columns: .35fr auto auto 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 'date1 hyphen date2 indexlinenews'; 
+        .indexline__news{
+            justify-content: flex-start;
+        } 
+    }
+
+    .servicio{
+        display: grid;
+        grid-template-columns: 300px auto;
+        grid-template-rows: min-content auto;
+        grid-template-areas: 
+        'imagen h3'
+        'imagen par';
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+    }
+
+    .servicio--left{
+        grid-template-columns: auto 300px;
+        grid-template-rows: min-content auto;
+        grid-template-areas: 
+        'h3 imagen'
+        'par imagen';
+    }
+
+    #frame{
+        min-height: 120vh;
+        min-width: 411px;
+    }
+
+    footer {
+        font-size: 1em;
+    }
+}
