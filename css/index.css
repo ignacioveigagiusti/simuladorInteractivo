@@ -55,7 +55,7 @@ body {
   font-size: 1rem;
   gap: 2vw;
   grid-area: head;
-  background-image: linear-gradient(#004086, #000032);
+  background-image: linear-gradient(#000032, #000032);
   padding: 10px 10px 20px 10px;
   color: whitesmoke;
   display: grid;
@@ -94,7 +94,7 @@ footer {
   grid-area: foot;
   padding: 16px;
   background-color: #004086;
-  background-image: linear-gradient(#000032, #004086);
+  background-image: linear-gradient(#000032, #000032);
   color: whitesmoke;
   align-self: end;
   width: 100%;

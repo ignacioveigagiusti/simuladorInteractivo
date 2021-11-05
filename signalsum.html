@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suma de Niveles Acústicos</title>
+    <title>Suma de Señales Acústicas</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src='js/main.js'></script>
-    <script src='js/dBsum.js'></script>
+    <script src='js/signalsum.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css" />
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans|Fuggles&display=swap'/> 
@@ -31,10 +31,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://isvacustica.netlify.app/">Inicio <span class="sr-only"></span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href='index.html'>Suma Niveles <span class="sr-only"></span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href='signalsum.html'>Suma Señales <span class="sr-only"></span></a>
                     </li>
                 </ul>
@@ -43,17 +43,34 @@
           </nav>   
     </header>
     <main>
-        <section class='indexsection'>
+        <section class='indexsection' style='padding-bottom:0'>
             <article>
-                <h2>Suma de Niveles de Presión Sonora</h2>
-                <p class='para'>La suma de niveles de presión sonora no es una simple suma aritmética, y su resultado depende de si estamos sumando 2 señales correlacionadas (la misma señal en 2 parlantes distintos, por ejemplo, algo que suele ocurrir en arreglos estéreo), o no correlacionadas (2 señales distintas).</p>
-                <p class='para'>Seleccione el tipo de suma que desea realizar con las señales ingresadas:</p>
+                <h2>Suma de Señales Acústicas</h2>
+                <p class='para' style='margin-bottom:0'>A partir de los datos ingresados se han calculado las siguientes variables acústicas para las señales individuales y su suma en la posición del receptor:</p>
             </article>
         </section>
-        <div class='btngroup'>
-        <button class='btn btn-primary' onclick="correlatedsum(soundPressureLevel1,soundPressureLevel2,phasediff)">Suma Correlacionada</button>
-        <button class='btn btn-primary' onclick="noncorrelatedsum(soundPressureLevel1,soundPressureLevel2)">Suma No Correlacionada</button>
-        </div>
+        <section>
+            <h3><b>Señal 1</b></h3>
+            <div class='btngroup'>
+                <button class='btn btn-secondary' onclick="alert(signal1.soundPowerLevel())">Nivel de Potencia Sonora</button>
+                <button class='btn btn-secondary' onclick="alert(signal1.soundPressureLevel())">Nivel de Presión Sonora en Receptor</button>
+                <button class='btn btn-secondary' onclick="alert(signal1.soundPressureLevel())">Presión Sonora (Pascales) en Receptor</button>
+            </div>
+        </section>
+        <section>
+            <h3><b>Señal 2</b></h3>
+            <div class='btngroup'>
+                <button class='btn btn-secondary' onclick="alert(signal2.soundPowerLevel())">Nivel de Potencia Sonora</button>
+                <button class='btn btn-secondary' onclick="alert(signal2.soundPressureLevel())">Nivel de Presión Sonora en Receptor</button>
+                <button class='btn btn-secondary' onclick="alert(signal2.soundPressureLevel())">Presión Sonora (Pascales) en Receptor</button>
+            </div>
+        </section>
+        <section>
+            <h3></h3>
+            <div class='btngroup'>
+                <button class='btn btn-primary' onclick="signalsum(signal1,signal2)">Nivel de Presión Sonora en Receptor (Suma de las Señales)</button>
+            </div>
+        </section>
     </main>
     <footer>
         <ul class="socialMedia">
