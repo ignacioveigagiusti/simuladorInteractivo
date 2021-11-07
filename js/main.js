@@ -1,6 +1,11 @@
+//PARA TRABAJAR CON OBJETOS: Los objetos serán señales que incluirán:
+// Nivel de Potencia o Presión / Distancia del Receptor / Factor de Directividad / Retraso Inicial
+
+//PARA TRABAJAR CON ARRAYS: Método dentro de la clase para armar un array de frecuencias que conforman la señal
+
 //Clases:
 
-class signal {
+class Signal {
     constructor(soundPower, distance, Qfactor, timeDelay){
         this.soundPower = parseFloat(soundPower);
         this.distance = parseFloat(distance);
@@ -51,12 +56,12 @@ function compareNumbers(a, b) {
 }
 
 //Suma correlacionada si las frecuencias coinciden, si no, no correlacionada
-function signalsum(signal1,signal2){
-    if (signal1.frequencies.length===signal2.frequencies.length && toString(signal1.frequencies.sort(compareNumbers))==toString(signal1.frequencies.sort(compareNumbers))) {
-        let phaseDifference = 2*Math.PI*parseFloat(signal1.frequencies.sort(compareNumbers)[0])*(signal1.timeDelay-signal2.timeDelay) + ((signal1.distance-signal2.distance) % (343/signal1.frequencies.sort(compareNumbers)[0]))
-        correlatedsum(signal1.soundPressureLevel(),signal2.soundPressureLevel(),phaseDifference);
+function signalsum(Signal1,Signal2){
+    if (Signal1.frequencies.length===Signal2.frequencies.length && toString(Signal1.frequencies.sort(compareNumbers))==toString(Signal1.frequencies.sort(compareNumbers))) {
+        let phaseDifference = 2*Math.PI*parseFloat(Signal1.frequencies.sort(compareNumbers)[0])*(Signal1.timeDelay-Signal2.timeDelay) + ((Signal1.distance-Signal2.distance) % (343/Signal1.frequencies.sort(compareNumbers)[0]))
+        correlatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel(),phaseDifference);
     }
     else{
-        noncorrelatedsum(signal1.soundPressureLevel(),signal2.soundPressureLevel());
+        noncorrelatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel());
     }
 }

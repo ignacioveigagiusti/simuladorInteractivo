@@ -1,8 +1,3 @@
-//PARA TRABAJAR CON OBJETOS: Los objetos serán señales que incluirán:
-// Nivel de Potencia o Presión / Distancia del Receptor / Factor de Directividad / Retraso Inicial
-
-//PARA TRABAJAR CON ARRAYS: Método dentro de la clase para armar un array de frecuencias que conforman la señal
-
 let soundPower1 = parseFloat(prompt("Ingrese el nivel de potencia sonora en Watts de la primera señal:"));
 while (isNaN(soundPower1)) {
     soundPower1 = parseFloat(prompt("Ingrese el nivel de potencia sonora en Watts de la primera señal (Debe ser un número!):"));
@@ -20,12 +15,12 @@ while (isNaN(timeDelay1)) {
     timeDelay1 = parseFloat(prompt("Ingrese el retraso en segundos de la primera señal (Debe ser un número!):"));
 }
 
-const signal1 = new signal(soundPower1, distance1, Qfactor1, timeDelay1);
+const Signal1 = new Signal(soundPower1, distance1, Qfactor1, timeDelay1);
 
 let newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 1, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
 
 while ( isNaN(newFrequency)==false && newFrequency>0 ) {
-    signal1.addFrequency(newFrequency);    
+    Signal1.addFrequency(newFrequency);    
     newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 1, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
 }
 
@@ -46,12 +41,11 @@ while (isNaN(timeDelay2)) {
     timeDelay2 = parseFloat(prompt("Ingrese el retraso en segundos de la segunda señal (Debe ser un número!):"));
 }
 
-const signal2 = new signal(soundPower2, distance2, Qfactor2, timeDelay2);
+const Signal2 = new Signal(soundPower2, distance2, Qfactor2, timeDelay2);
 
 newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 2, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
 
 while (isNaN(newFrequency)==false && newFrequency>0 ) {
-    signal2.addFrequency(newFrequency);    
+    Signal2.addFrequency(newFrequency);    
     newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 2, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
 } 
-
