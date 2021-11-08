@@ -1,5 +1,5 @@
 //PARA TRABAJAR CON OBJETOS: Los objetos serán señales que incluirán:
-// Nivel de Potencia o Presión / Distancia del Receptor / Factor de Directividad (Q) / Retraso Inicial
+// Nivel de Potencia o Presión / Distancia del Receptor / Factor de Directividad / Retraso Inicial
 
 //PARA TRABAJAR CON ARRAYS: Método dentro de la clase para armar un array de frecuencias que conforman la señal
 
@@ -35,7 +35,7 @@ function correlatedsum(spl1,spl2,phasediff){
     p2 = ( 10**(spl2/20) ) * 2 * (10**(-5));
     corsumpef = Math.sqrt( (p1**2) + (p2**2) + (2*p1*p2*(Math.cos(phasediff))) );
     if (corsumpef>0) {
-        corsum = parseInt(10*( Math.log10 ( (corsumpef**2) / (4*(10**(-10))) )));
+        corsum = parseInt(20*( Math.log10 ( (corsumpef) / (20*(10**(-6))) )));
     }
     else {
         corsum = 0
@@ -55,20 +55,13 @@ function compareNumbers(a, b) {
     return a - b;
 }
 
-//Espectros de frecuencias ordenados para compararlos
-
-frequencySpectrum1 = toString(Signal1.frequencies.sort(compareNumbers))
-frequencySpectrum2 = toString(Signal2.frequencies.sort(compareNumbers))
-
 //Suma correlacionada si las frecuencias coinciden, si no, no correlacionada
 function signalsum(Signal1,Signal2){
-    if (Signal1.frequencies.length===Signal2.frequencies.length && frequencySpectrum1==frequencySpectrum2) {
-        //tomo la frecuencia más baja del array
+    if (Signal1.frequencies.length===Signal2.frequencies.length && toString(Signal1.frequencies.sort(compareNumbers))==toString(Signal1.frequencies.sort(compareNumbers))) {
+        //Tomo la frecuencia más baja del array
         let lowestFrequency = parseFloat(Signal1.frequencies.sort(compareNumbers)[0]);
-
-        //Calculo la diferencia de Fase (2*pi*lowestfreq * (diferencie de tiempo) + (resto entre diferencia de distancias y c/lowestfreq))
+        //Calculo la diferencia de fase
         let phaseDifference = 2*Math.PI*lowestFrequency*(Signal1.timeDelay-Signal2.timeDelay) + ((Signal1.distance-Signal2.distance) % (343/lowestFrequency));
-        
         correlatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel(),phaseDifference);
     }
     else{
