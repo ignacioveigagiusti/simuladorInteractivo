@@ -35,7 +35,7 @@ function correlatedsum(spl1,spl2,phasediff){
     p2 = ( 10**(spl2/20) ) * 2 * (10**(-5));
     corsumpef = Math.sqrt( (p1**2) + (p2**2) + (2*p1*p2*(Math.cos(phasediff))) );
     if (corsumpef>0) {
-        corsum = parseInt(10*( Math.log10 ( (corsumpef**2) / (4*(10**(-10))) )));
+        corsum = parseInt(20*( Math.log10 ( (corsumpef) / (20*(10**(-6))) )));
     }
     else {
         corsum = 0
@@ -58,7 +58,13 @@ function compareNumbers(a, b) {
 //Suma correlacionada si las frecuencias coinciden, si no, no correlacionada
 function signalsum(Signal1,Signal2){
     if (Signal1.frequencies.length===Signal2.frequencies.length && toString(Signal1.frequencies.sort(compareNumbers))==toString(Signal1.frequencies.sort(compareNumbers))) {
-        let phaseDifference = 2*Math.PI*parseFloat(Signal1.frequencies.sort(compareNumbers)[0])*(Signal1.timeDelay-Signal2.timeDelay) + ((Signal1.distance-Signal2.distance) % (343/Signal1.frequencies.sort(compareNumbers)[0]))
+        
+        //Tomo la frecuencia más baja del array
+        let lowestFrequency = parseFloat(Signal1.frequencies.sort(compareNumbers)[0]);
+        
+        //Calculo la diferencia de fase
+        let phaseDifference = 2*Math.PI*lowestFrequency*(Signal1.timeDelay-Signal2.timeDelay) + ((Signal1.distance-Signal2.distance) % (343/lowestFrequency));
+        
         correlatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel(),phaseDifference);
     }
     else{
