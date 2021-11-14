@@ -1,51 +1,95 @@
-let soundPower1 = parseFloat(prompt("Ingrese el nivel de potencia sonora en Watts de la primera señal:"));
-while (isNaN(soundPower1)) {
-    soundPower1 = parseFloat(prompt("Ingrese el nivel de potencia sonora en Watts de la primera señal (Debe ser un número!):"));
-}
-let distance1 = parseFloat(prompt("Ingrese la distancia en metros de la fuente de la primera señal al receptor:"));
-while (isNaN(distance1)) {
-    distance1 = parseFloat(prompt("Ingrese la distancia en metros de la fuente de la primera señal al receptor (Debe ser un número!):"));
-}
-let Qfactor1 = parseFloat(prompt("Ingrese la directividad de la fuente de la primera señal (Q=1 - Emite en todas las direcciones, Q=2 - Emite de forma semiesférica (sólo hacia el frente), Q>2 - A mayor Q, más directiva la fuente):"));
-while (isNaN(Qfactor1)) {
-    Qfactor1 = parseFloat(prompt("Ingrese la directividad de la fuente de la primera señal (Q=1 - Emite en todas las direcciones, Q=2 - Emite de forma semiesférica (sólo hacia el frente), Q>2 - A mayor Q, más directiva la fuente) (Debe ser un número!):"));
-}
-let timeDelay1 = parseFloat(prompt("Ingrese el retraso en segundos de la primera señal:"));
-while (isNaN(timeDelay1)) {
-    timeDelay1 = parseFloat(prompt("Ingrese el retraso en segundos de la primera señal (Debe ser un número!):"));
+//Se traen las señales guardadas en sesiones previas
+let Signal1 = JSON.parse(localStorage.getItem('Signal1'));
+let Signal2 = JSON.parse(localStorage.getItem('Signal2'));
+
+//función Callback para traer señales anteriores
+
+let retrieveLastSignal = document.getElementById("retrieveLastSignal");
+retrieveLastSignal.addEventListener('click',retrieveLastSignalCallback);
+function retrieveLastSignalCallback() {
+    //Traigo las señales de nuevo por si fueron creadas nuevas señales durante la sesión
+    Signal1 = JSON.parse(localStorage.getItem('Signal1'));
+    Signal2 = JSON.parse(localStorage.getItem('Signal2'));
+    //Asigno valores
+    document.getElementById("soundPower1").value = Signal1.soundPower;
+    document.getElementById("distance1").value = Signal1.distance;
+    document.getElementById("Qfactor1").value = Signal1.Qfactor;
+    document.getElementById("timeDelay1").value = Signal1.timeDelay;
+    if (Signal1.frequencies[0] >= 0 && Signal1.frequencies[0] !== null){
+        document.getElementById("frequency1signal1").value = Signal1.frequencies[0]
+    }
+    if (Signal1.frequencies[1] >= 0 && Signal1.frequencies[1] !== null){
+        document.getElementById("frequency2signal1").value = Signal1.frequencies[1]
+    }
+    if (Signal1.frequencies[2] >= 0 && Signal1.frequencies[2] !== null){
+        document.getElementById("frequency3signal1").value = Signal1.frequencies[2] 
+    }
+    if (Signal1.frequencies[3] >= 0 && Signal1.frequencies[3] !== null){
+        document.getElementById("frequency4signal1").value = Signal1.frequencies[3]      
+    }
+    document.getElementById("soundPower2").value = Signal2.soundPower;
+    document.getElementById("distance2").value = Signal2.distance;
+    document.getElementById("Qfactor2").value = Signal2.Qfactor;
+    document.getElementById("timeDelay2").value = Signal2.timeDelay;
+    if (Signal2.frequencies[0] >= 0 && Signal1.frequencies[0] !== null){
+        document.getElementById("frequency1signal2").value = Signal2.frequencies[0]
+    }
+    if (Signal2.frequencies[1] >= 0 && Signal1.frequencies[1] !== null){
+        document.getElementById("frequency2signal2").value = Signal2.frequencies[1]
+    }
+    if (Signal2.frequencies[2] >= 0 && Signal1.frequencies[2] !== null){
+        document.getElementById("frequency3signal2").value = Signal2.frequencies[2]
+    }
+    if (Signal2.frequencies[3] >= 0 && Signal1.frequencies[3] !== null){
+        document.getElementById("frequency4signal2").value = Signal2.frequencies[3]
+    }
 }
 
-const Signal1 = new Signal(soundPower1, distance1, Qfactor1, timeDelay1);
+//Función para calcular los parámetros acústicos
 
-let newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 1, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
-
-while ( isNaN(newFrequency)==false && newFrequency>0 ) {
-    Signal1.addFrequency(newFrequency);    
-    newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 1, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
+let calculate = document.getElementById("calculate");
+calculate.addEventListener('click',calculateCallback);
+function calculateCallback() {
+    //Tomo datos
+    let soundPower1 = parseFloat(document.getElementById("soundPower1").value);
+    let distance1 = parseFloat(document.getElementById("distance1").value);
+    let Qfactor1 = parseFloat(document.getElementById("Qfactor1").value);
+    let timeDelay1 = parseFloat(document.getElementById("timeDelay1").value);
+    let soundPower2 = parseFloat(document.getElementById("soundPower2").value);
+    let distance2 = parseFloat(document.getElementById("distance2").value);
+    let Qfactor2 = parseFloat(document.getElementById("Qfactor2").value);
+    let timeDelay2 = parseFloat(document.getElementById("timeDelay2").value);
+    
+    //Chequeo de datos
+    if (isNaN(soundPower1) || isNaN(distance1) || isNaN(Qfactor1) || isNaN(timeDelay1) || isNaN(soundPower2) || isNaN(distance2) || isNaN(Qfactor2) || isNaN(timeDelay2)) {
+        alert('Alguno de los valores ingresados no es correcto')
+    }
+    else{
+        //Construyo las señales
+        const Signal1 = new Signal(soundPower1, distance1, Qfactor1, timeDelay1);
+        const Signal2 = new Signal(soundPower2, distance2, Qfactor2, timeDelay2);
+        
+        Signal1.addFrequency(parseInt(document.getElementById('frequency1signal1').value));
+        Signal1.addFrequency(parseInt(document.getElementById('frequency2signal1').value));
+        Signal1.addFrequency(parseInt(document.getElementById('frequency3signal1').value));
+        Signal1.addFrequency(parseInt(document.getElementById('frequency4signal1').value));
+        Signal2.addFrequency(parseInt(document.getElementById('frequency1signal2').value));
+        Signal2.addFrequency(parseInt(document.getElementById('frequency2signal2').value));
+        Signal2.addFrequency(parseInt(document.getElementById('frequency3signal2').value));
+        Signal2.addFrequency(parseInt(document.getElementById('frequency4signal2').value));
+        
+        //Almaceno
+        localStorage.setItem('Signal1', JSON.stringify(Signal1));
+        localStorage.setItem('Signal2', JSON.stringify(Signal2));    
+        
+        
+        //Calculo
+        document.getElementById('signalSumResult').innerHTML = signalsum(Signal1,Signal2);
+        document.getElementById('soundPowerLevel1').value = parseInt(Signal1.soundPowerLevel());
+        document.getElementById('soundPressureLevel1').value = parseInt(Signal1.soundPressureLevel());
+        document.getElementById('soundPressure1').value = parseInt(Signal1.soundPressure());
+        document.getElementById('soundPowerLevel2').value = parseInt(Signal2.soundPowerLevel());
+        document.getElementById('soundPressureLevel2').value = parseInt(Signal2.soundPressureLevel());
+        document.getElementById('soundPressure2').value = parseInt(Signal2.soundPressure());
+    }
 }
-
-let soundPower2 = parseFloat(prompt("Ingrese el nivel de potencia sonora en Watts de la segunda señal:"));
-while (isNaN(soundPower2)) {
-    soundPower2 = parseFloat(prompt("Ingrese el nivel de potencia sonora en Watts de la segunda señal (Debe ser un número!):"));
-}
-let distance2 = parseFloat(prompt("Ingrese la distancia en metros de la fuente de la segunda señal al receptor:"));
-while (isNaN(distance2)) {
-    distance2 = parseFloat(prompt("Ingrese la distancia en metros de la fuente de la segunda señal al receptor (Debe ser un número!):"));
-}
-let Qfactor2 = parseFloat(prompt("Ingrese la directividad de la fuente de la segunda señal (Q=1 - Emite en todas las direcciones, Q=2 - Emite de forma semiesférica (sólo hacia el frente), Q>2 - A mayor Q, más directiva la fuente):"));
-while (isNaN(Qfactor2)) {
-    Qfactor2 = parseFloat(prompt("Ingrese la directividad de la fuente de la segunda señal (Q=1 - Emite en todas las direcciones, Q=2 - Emite de forma semiesférica (sólo hacia el frente), Q>2 - A mayor Q, más directiva la fuente) (Debe ser un número!):"));
-}
-let timeDelay2 = parseFloat(prompt("Ingrese el retraso en segundos de la segunda señal:"));
-while (isNaN(timeDelay2)) {
-    timeDelay2 = parseFloat(prompt("Ingrese el retraso en segundos de la segunda señal (Debe ser un número!):"));
-}
-
-const Signal2 = new Signal(soundPower2, distance2, Qfactor2, timeDelay2);
-
-newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 2, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
-
-while (isNaN(newFrequency)==false && newFrequency>0 ) {
-    Signal2.addFrequency(newFrequency);    
-    newFrequency = parseFloat(prompt("Ingrese una frecuencia para agregarla al espectro de la señal 2, cuando quiera dejar de ingresar frecuencias ingrese 0, un valor negativo o un carácter no numérico:"));
-} 

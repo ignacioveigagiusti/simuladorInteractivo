@@ -153,6 +153,24 @@ iframe{
     text-align: center;
 }
 
+.appTable{
+    border-collapse: separate;
+}
+
+.appTable_frequencyContainer {
+    display: flex;
+    border-collapse: collapse;
+}
+
+.appTable_Input--f{
+    width: 25%;
+}
+
+.appTable_Input--result{
+    border-color: $ISVblue;
+    background-color: whitesmoke;
+}
+
 /*Nosotros*/
 
 form fieldset{

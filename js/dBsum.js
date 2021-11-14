@@ -1,12 +1,26 @@
-let soundPressureLevel1 = parseFloat(prompt("Ingrese el nivel de presión sonora en decibeles de la primera señal:"));
-while (isNaN(soundPressureLevel1)) {
-    soundPressureLevel1 = parseFloat(prompt("Ingrese el nivel de presión sonora en decibeles de la primera señal (Debe ser un número!):"));
+let correlatedSumButton = document.getElementById("correlatedSum");
+correlatedSumButton.addEventListener('click',correlatedSumButtonCallback);
+function correlatedSumButtonCallback() { 
+    let soundPressureLevel1 = parseFloat(document.getElementById("soundPLevel1").value)
+    let soundPressureLevel2 = parseFloat(document.getElementById("soundPLevel2").value)
+    let phaseDifference = parseFloat(document.getElementById("phaseDifference").value)
+    if (isNaN(soundPressureLevel1) || isNaN(soundPressureLevel2) || isNaN(phaseDifference)) {
+        alert('Alguno de los valores ingresados no es correcto')
+    }
+    else{
+    document.getElementById('sumResult').value = correlatedsum(soundPressureLevel1,soundPressureLevel2,phaseDifference);
+    }
 }
-let soundPressureLevel2 = parseFloat(prompt("Ingrese el nivel de presión sonora en decibeles de la segunda señal:"));
-while (isNaN(soundPressureLevel2)) {
-    soundPressureLevel2 = parseFloat(prompt("Ingrese el nivel de presión sonora en decibeles de la segunda señal (Debe ser un número!):"));
-}
-let phaseDifference = parseFloat(prompt("Ingrese la diferencia de fase (sólo necesaria si desea realizar una suma correlacionada):"));
-while (isNaN(phaseDifference)) {
-    phaseDifference = parseFloat(prompt("Ingrese la diferencia de fase (sólo necesaria si desea realizar una suma correlacionada) (Debe ser un número!):"));
+
+let nonCorrelatedSumButton = document.getElementById("nonCorrelatedSum");
+nonCorrelatedSumButton.addEventListener('click',nonCorrelatedSumButtonCallback);
+function nonCorrelatedSumButtonCallback() { 
+    let soundPressureLevel1 = parseFloat(document.getElementById("soundPLevel1").value)
+    let soundPressureLevel2 = parseFloat(document.getElementById("soundPLevel2").value)
+    if (isNaN(soundPressureLevel1) || isNaN(soundPressureLevel2)) {
+        alert('Alguno de los valores ingresados no es correcto')
+    }
+    else{
+    document.getElementById('sumResult').value = noncorrelatedsum(soundPressureLevel1,soundPressureLevel2);
+    }
 }

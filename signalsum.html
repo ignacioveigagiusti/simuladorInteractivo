@@ -8,8 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src='js/main.js'></script>
-    <script src='js/signalsum.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css" />
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans|Fuggles&display=swap'/> 
@@ -46,29 +44,121 @@
         <section class='indexsection' style='padding-bottom:0'>
             <article>
                 <h2>Suma de Señales Acústicas</h2>
-                <p class='para' style='margin-bottom:0'>A partir de los datos ingresados se han calculado las siguientes variables acústicas para las señales individuales y su suma en la posición del receptor:</p>
+                <p class='para' style='margin-bottom:0'>A partir de los datos ingresados se podrán calcular las siguientes variables acústicas para las señales individuales y su suma en la posición del receptor:</p>
             </article>
         </section>
         <section>
-            <h3><b>Señal 1</b></h3>
-            <div class='btngroup'>
-                <button class='btn btn-secondary' onclick="alert(parseInt(Signal1.soundPowerLevel()))">Nivel de Potencia Sonora</button>
-                <button class='btn btn-secondary' onclick="alert(parseInt(Signal1.soundPressureLevel()))">Nivel de Presión Sonora en Receptor</button>
-                <button class='btn btn-secondary' onclick="alert(parseInt(Signal1.soundPressure()))">Presión Sonora (Pascales) en Receptor</button>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col'>
+                        <table class='appTable container'>
+                            <tr><th>Señal 1</th></tr>
+                            <tr>
+                                <th class='col' scope='row'>Potencia (Watt)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='soundPower1' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Distancia (Metros)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='distance1' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Factor de Directividad (Q)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='Qfactor1' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Retraso inicial (Segundos)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='timeDelay1' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Frecuencias</th>
+                                <td class='col'>
+                                    <div class='appTable appTable_frequencyContainer'>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency1signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency2signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency3signal1' placeholder="0"></input>  
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency4signal1' placeholder="0"></input>
+                                    </div>    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel1'></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel1'></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure1'></input></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class='col'>
+                        <table class='appTable container'>
+                            <th>Señal 2</th>
+                            <tr>
+                                <th class='col' scope='row'>Potencia (Watt)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='soundPower2' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Distancia (Metros)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='distance2' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Factor de Directividad (Q)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='Qfactor2' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Retraso inicial (Segundos)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='timeDelay2' placeholder="0"></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Frecuencias</th>
+                                <td class='col'>
+                                    <div class='appTable appTable_frequencyContainer'>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency1signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency2signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency3signal2' placeholder="0"></input>    
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency4signal2' placeholder="0"></input>
+                                    </div>    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel2'></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel2'></input></td>
+                            </tr>
+                            <tr>
+                                <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure2'></input></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
         <section>
-            <h3><b>Señal 2</b></h3>
-            <div class='btngroup'>
-                <button class='btn btn-secondary' onclick="alert(parseInt(Signal2.soundPowerLevel()))">Nivel de Potencia Sonora</button>
-                <button class='btn btn-secondary' onclick="alert(parseInt(Signal2.soundPressureLevel()))">Nivel de Presión Sonora en Receptor</button>
-                <button class='btn btn-secondary' onclick="alert(parseInt(Signal2.soundPressure()))">Presión Sonora (Pascales) en Receptor</button>
-            </div>
-        </section>
-        <section>
-            <h3></h3>
-            <div class='btngroup'>
-                <button class='btn btn-primary' onclick="parseInt(signalsum(Signal1,Signal2))">Nivel de Presión Sonora en Receptor (Suma de las Señales)</button>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col'>
+                        <td>
+                            <button class='btn btn-primary' id='calculate'>Calcular</button>
+                            <button class='btn btn-secondary' id='retrieveLastSignal'>Cargar Señal Anterior</button>
+                        </td>
+                    </div>
+                    <div class='col'>
+                        <table>
+                            <tr>
+                                <td>Suma de Niveles de Presión: </td>
+                                <td><strong id=signalSumResult></strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -81,5 +171,7 @@
         </ul>
         <h6 class="rights">© Todos los derechos reservados</h6>
     </footer>
+    <script src='js/main.js'></script>
+    <script src='js/signalsum.js'></script>
 </body>
 </html>

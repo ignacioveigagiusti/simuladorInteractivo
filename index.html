@@ -8,8 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src='js/main.js'></script>
-    <script src='js/dBsum.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css" />
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans|Fuggles&display=swap'/> 
@@ -49,11 +47,43 @@
                 <p class='para'>La suma de niveles de presión sonora no es una simple suma aritmética, y su resultado depende de si estamos sumando 2 señales correlacionadas (la misma señal en 2 parlantes distintos, por ejemplo, algo que suele ocurrir en arreglos estéreo), o no correlacionadas (2 señales distintas).</p>
                 <p class='para'>Seleccione el tipo de suma que desea realizar con las señales ingresadas:</p>
             </article>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Nivel de Presión Sonora 1</th>
+                        <td>
+                            <input id='soundPLevel1' placeholder="0"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nivel de Presión Sonora 2</th>
+                        <td>
+                            <input id='soundPLevel2' placeholder="0"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Diferencia de Fase</th>
+                        <td>
+                            <input id='phaseDifference' placeholder="0"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class='btngroup'>
+                                <button id='correlatedSum' class='btn btn-primary' >Suma Correlacionada</button>
+                                <button id='nonCorrelatedSum' class='btn btn-primary' >Suma No Correlacionada</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Suma</th>
+                        <td>
+                            <input readonly id='sumResult'></input>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
-        <div class='btngroup'>
-        <button class='btn btn-primary' onclick="correlatedsum(soundPressureLevel1,soundPressureLevel2,phaseDifference)">Suma Correlacionada</button>
-        <button class='btn btn-primary' onclick="noncorrelatedsum(soundPressureLevel1,soundPressureLevel2)">Suma No Correlacionada</button>
-        </div>
     </main>
     <footer>
         <ul class="socialMedia">
@@ -64,5 +94,7 @@
         </ul>
         <h6 class="rights">© Todos los derechos reservados</h6>
     </footer>
+    <script src='js/main.js'></script>
+    <script src='js/dBsum.js'></script>
 </body>
 </html>
