@@ -23,7 +23,9 @@ class Signal {
         return (10**(this.soundPressureLevel()/20)) * 2 * (10**(-5));
     }
     addFrequency(newFrequency){
-        this.frequencies.push(newFrequency);
+        if (newFrequency >= 0 && newFrequency !== null) {
+            this.frequencies.push(newFrequency);
+        }
     }
 }
 
@@ -38,16 +40,38 @@ function correlatedsum(spl1,spl2,phasediff){
         corsum = parseInt(20*( Math.log10 ( (corsumpef) / (20*(10**(-6))) )));
     }
     else {
-        corsum = 0
+        corsum = 0;
     }
-    let corsumalert = 'La suma de los niveles es: ' + corsum + ' dB';
-    alert(corsumalert)
+    let corsumalert;
+    if (corsum < 0) {
+        corsum = 0;
+        corsumalert = corsum + ' dB';
+    } else {
+        corsumalert = corsum + ' dB';
+    }
+    return corsumalert;
 }
 
 function noncorrelatedsum(spl1,spl2){
     noncorsum = parseInt(10 * Math.log10( 10**(spl1/10) + 10**(spl2/10)));
-    let noncorsumalert = 'La suma de los niveles es: ' + noncorsum + ' dB';
-    alert(noncorsumalert)
+    let noncorsumalert = noncorsum + ' dB';
+    return noncorsumalert;
+}
+
+function correlatedsumDirect(spl1,spl2,phasediff){
+    corsum = correlatedsum(spl1,spl2,phasediff);
+    let sumResult = document.getElementById('sumResult');
+    let corSumResult = document.createElement("corSumResult");
+    corSumResult.innerHTML = '<input readonly>' + corsum + '</input>';
+    sumResult.appendChild(corSumResult);
+}
+
+function noncorrelatedsumDirect(spl1,spl2){
+    noncorsum = noncorrelatedsum(spl1,spl2);
+    let sumResult = document.getElementById('sumResult');
+    let nonCorSumResult = document.createElement("nonCorSumResult");
+    nonCorSumResult.innerHTML = '<input readonly>' + noncorcum + '</input>';
+    sumResult.appendChild(nonCorSumResult);
 }
 
 //Funcion comparadora para poder ordenar ascendentemente arrays numéricos con el método sort
@@ -57,7 +81,7 @@ function compareNumbers(a, b) {
 
 //Suma correlacionada si las frecuencias coinciden, si no, no correlacionada
 function signalsum(Signal1,Signal2){
-    if (Signal1.frequencies.length===Signal2.frequencies.length && toString(Signal1.frequencies.sort(compareNumbers))==toString(Signal1.frequencies.sort(compareNumbers))) {
+    if (Signal1.frequencies.length===Signal2.frequencies.length && Signal1.frequencies.length > 0 && toString(Signal1.frequencies.sort(compareNumbers))==toString(Signal1.frequencies.sort(compareNumbers))) {
         
         //Tomo la frecuencia más baja del array
         let lowestFrequency = parseFloat(Signal1.frequencies.sort(compareNumbers)[0]);
@@ -65,9 +89,11 @@ function signalsum(Signal1,Signal2){
         //Calculo la diferencia de fase
         let phaseDifference = 2*Math.PI*lowestFrequency*(Signal1.timeDelay-Signal2.timeDelay) + ((Signal1.distance-Signal2.distance) % (343/lowestFrequency));
         
-        correlatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel(),phaseDifference);
+        let signalsum = correlatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel(),phaseDifference);
+        return signalsum;
     }
     else{
-        noncorrelatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel());
+        let signalsum = noncorrelatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel());
+        return signalsum;
     }
 }

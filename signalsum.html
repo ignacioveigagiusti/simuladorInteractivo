@@ -8,8 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src='js/main.js'></script>
-    <script src='js/signalsum.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css" />
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans|Fuggles&display=swap'/> 
@@ -53,132 +51,90 @@
             <div class='container'>
                 <div class='row'>
                     <div class='col'>
-                        <table>
-                            <tr><th colspan='2'>Señal 1</th></tr>
+                        <table class='appTable container'>
+                            <tr><th>Señal 1</th></tr>
                             <tr>
-                                <th scope='row'>Potencia (Watt)</th>
-                                <td><input id='soundPower1' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Potencia (Watt)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='soundPower1' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Distancia (Metros)</th>
-                                <td><input id='distance1' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Distancia (Metros)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='distance1' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Factor de Directividad (Q)</th>
-                                <td><input id='Qfactor1' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Factor de Directividad (Q)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='Qfactor1' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Retraso inicial (Segundos)</th>
-                                <td><input id='timeDelay1' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Retraso inicial (Segundos)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='timeDelay1' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Frecuencias</th>
-                                <td>
-                                    <div class='col-xs-1'>
-                                        <input id='frequency1signal1' placeholder="0"></input>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope='row'></th>    
-                                <td>
-                                    <div class='col-xs-1'>
-                                        <input id='frequency2signal1' placeholder="0"></input>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope='row'></th>
-                                <td>
-                                    <div class='col-xs-1'>
-                                        <input id='frequency3signal1' placeholder="0"></input>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope='row'></th>
-                                <td>
-                                    <div class='col-xs-1'>    
-                                        <input id='frequency4signal1' placeholder="0"></input>
+                                <th class='col' scope='row'>Frecuencias</th>
+                                <td class='col'>
+                                    <div class='appTable appTable_frequencyContainer'>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency1signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency2signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency3signal1' placeholder="0"></input>  
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency4signal1' placeholder="0"></input>
                                     </div>    
                                 </td>
                             </tr>
                             <tr>
-                                <th scope='row'>Nivel de Potencia Acústica (dB)</th>
-                                <td><input readonly id='soundPowerLevel1'></input></td>
+                                <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel1'></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Nivel de Presión Sonora (dB)</th>
-                                <td><input readonly id='soundPressureLevel1'></input></td>
+                                <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel1'></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Presión Eficaz (Pascales)</th>
-                                <td><input readonly id='soundPressure1'></input></td>
+                                <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure1'></input></td>
                             </tr>
                         </table>
                     </div>
                     <div class='col'>
-                        <table>
+                        <table class='appTable container'>
                             <th>Señal 2</th>
                             <tr>
-                                <th scope='row'>Potencia (Watt)</th>
-                                <td><input id='soundPower2' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Potencia (Watt)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='soundPower2' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'vvv>Distancia (Metros)</th>
-                                <td><input id='distance2' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Distancia (Metros)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='distance2' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Factor de Directividad (Q)</th>
-                                <td><input id='Qfactor2' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Factor de Directividad (Q)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='Qfactor2' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Retraso inicial (Segundos)</th>
-                                <td><input id='timeDelay2' placeholder="0"></input></td>
+                                <th class='col' scope='row'>Retraso inicial (Segundos)</th>
+                                <td class='col'><input class='appTable appTable_Input' id='timeDelay2' placeholder="0"></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Frecuencias</th>
-                                <td>
-                                    <div class='col-xs-1'>
-                                        <input id='frequency1signal2' placeholder="0"></input>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope='row'></th>    
-                                <td>
-                                    <div class='col-xs-1'>
-                                        <input id='frequency2signal2' placeholder="0"></input>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope='row'></th>
-                                <td>
-                                    <div class='col-xs-1'>
-                                        <input id='frequency3signal2' placeholder="0"></input>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope='row'></th>
-                                <td>
-                                    <div class='col-xs-1'>    
-                                        <input id='frequency4signal2' placeholder="0"></input>
+                                <th class='col' scope='row'>Frecuencias</th>
+                                <td class='col'>
+                                    <div class='appTable appTable_frequencyContainer'>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency1signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency2signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency3signal2' placeholder="0"></input>    
+                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency4signal2' placeholder="0"></input>
                                     </div>    
                                 </td>
                             </tr>
                             <tr>
-                                <th scope='row'>Nivel de Potencia Acústica (dB)</th>
-                                <td><input readonly id='soundPowerLevel2'></input></td>
+                                <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel2'></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Nivel de Presión Sonora (dB)</th>
-                                <td><input readonly id='soundPressureLevel2'></input></td>
+                                <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel2'></input></td>
                             </tr>
                             <tr>
-                                <th scope='row'>Presión Eficaz (Pascales)</th>
-                                <td><input readonly id='soundPressure2'></input></td>
+                                <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
+                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure2'></input></td>
                             </tr>
                         </table>
                     </div>
@@ -190,14 +146,15 @@
                 <div class='row'>
                     <div class='col'>
                         <td>
-                            <button class='btn btn-primary' onclick="signalsum(Signal1,signal2)">Calcular</button>
+                            <button class='btn btn-primary' id='calculate'>Calcular</button>
+                            <button class='btn btn-secondary' id='retrieveLastSignal'>Cargar Señal Anterior</button>
                         </td>
                     </div>
                     <div class='col'>
                         <table>
                             <tr>
-                                <td>Suma de Niveles de Presión (dB)</td>
-                                <td></td>
+                                <td>Suma de Niveles de Presión: </td>
+                                <td><strong id=signalSumResult></strong></td>
                             </tr>
                         </table>
                     </div>
@@ -214,5 +171,7 @@
         </ul>
         <h6 class="rights">© Todos los derechos reservados</h6>
     </footer>
+    <script src='js/main.js'></script>
+    <script src='js/signalsum.js'></script>
 </body>
 </html>
