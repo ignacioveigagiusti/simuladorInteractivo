@@ -40,6 +40,9 @@ ul {
   filter: invert(21%) sepia(86%) saturate(4345%) hue-rotate(187deg) brightness(95%) contrast(101%); }
 
 /*Mixins*/
+html {
+  font-size: 50%; }
+
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -242,6 +245,11 @@ iframe {
 .appTable_Input--result {
   border-color: #004086;
   background-color: whitesmoke; }
+
+#errorMessage {
+  color: crimson;
+  text-align: center;
+  display: none; }
 
 /*Nosotros*/
 form fieldset {
@@ -612,7 +620,17 @@ article {
     margin-top: 5px;
     margin-bottom: 5px; } }
 
+@media screen and (max-width: 600px) {
+  .appTable {
+    border-collapse: collapse; } }
+
+@media screen and (min-width: 450px) and (max-width: 655px) {
+  html {
+    font-size: 100%; } }
+
 @media screen and (min-width: 655px) and (max-width: 768px) {
+  html {
+    font-size: 100%; }
   .servicio {
     display: flex;
     flex-direction: column;
@@ -624,6 +642,8 @@ article {
     width: 50%; } }
 
 @media (min-width: 768px) {
+  html {
+    font-size: 100%; }
   .navbar-expand-md .navbar-nav {
     flex-direction: row;
     flex-wrap: wrap; }

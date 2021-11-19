@@ -97,3 +97,17 @@ function signalsum(Signal1,Signal2){
         return signalsum;
     }
 }
+
+
+// Funciones para estilos y clases:
+
+$(window).on('resize', function() {
+    var win = $(this);
+    if (win.width() < 580) {
+  
+      $('.appTable').addClass('table-bordered');
+  
+    } else {
+      $('.appTable').removeClass('table-bordered');
+    }
+  });

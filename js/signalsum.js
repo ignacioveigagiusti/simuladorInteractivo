@@ -62,9 +62,14 @@ function calculateCallback() {
     
     //Chequeo de datos
     if (isNaN(soundPower1) || isNaN(distance1) || isNaN(Qfactor1) || isNaN(timeDelay1) || isNaN(soundPower2) || isNaN(distance2) || isNaN(Qfactor2) || isNaN(timeDelay2)) {
-        alert('Alguno de los valores ingresados no es correcto')
+        document.getElementById("signalSumTag").innerHTML = 'Alguno de los valores ingresados no es correcto!';
+        document.getElementById("signalSumTag").style.color = 'crimson';
+        document.getElementById("signalSumResult").style.display = 'none';
     }
     else{
+        document.getElementById("signalSumTag").innerHTML = 'Suma de Niveles de Presión: ';
+        document.getElementById("signalSumTag").style.color = 'black';
+        document.getElementById("signalSumResult").style.display = 'table-cell';
         //Construyo las señales
         const Signal1 = new Signal(soundPower1, distance1, Qfactor1, timeDelay1);
         const Signal2 = new Signal(soundPower2, distance2, Qfactor2, timeDelay2);

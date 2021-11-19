@@ -1,9 +1,9 @@
 /*Media Queries*/
 
 @media screen and (max-width: 275px) {
-     .header__pagetitle{
+    .header__pagetitle{
          font-size: 5vw;
-     }
+    }
 }
 
 @media screen and (max-width: 410px) {
@@ -38,7 +38,23 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+    .appTable{
+        border-collapse: collapse;
+    }
+}
+
+@media screen and (min-width: 450px) and (max-width: 655px) {
+    html{
+        font-size: 100%;
+    }
+}
+
 @media screen and (min-width: 655px) and (max-width: 768px) {
+    html{
+        font-size: 100%;
+    }
+    
     .servicio{
         display: flex;
         flex-direction: column;
@@ -56,6 +72,10 @@
 }
 
 @media (min-width: 768px){
+    html{
+        font-size: 100%;
+    }
+    
     .navbar-expand-md .navbar-nav {
         flex-direction: row;
         flex-wrap: wrap;
