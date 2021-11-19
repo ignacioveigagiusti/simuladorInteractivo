@@ -1,6 +1,12 @@
 //Se traen las señales guardadas en sesiones previas
-let Signal1 = JSON.parse(localStorage.getItem('Signal1'));
-let Signal2 = JSON.parse(localStorage.getItem('Signal2'));
+if (localStorage.getItem("Signal1") === null && localStorage.getItem("Signal1") === null) {
+    localStorage.setItem('Signal1', '{"soundPower":10,"distance":1,"Qfactor":1,"timeDelay":0,"frequencies":[40,80,160,320]}');
+    localStorage.setItem('Signal2', '{"soundPower":20,"distance":2,"Qfactor":2,"timeDelay":1,"frequencies":[40,80,160,320]}');
+}else{
+    let Signal1 = JSON.parse(localStorage.getItem('Signal1'));
+    let Signal2 = JSON.parse(localStorage.getItem('Signal2'));
+}    
+
 
 //función Callback para traer señales anteriores
 
@@ -98,3 +104,11 @@ function calculateCallback() {
         document.getElementById('soundPressure2').value = parseInt(Signal2.soundPressure());
     }
 }
+
+// Ejecutar con 'Enter'
+document.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("calculate").click();
+    }
+});
