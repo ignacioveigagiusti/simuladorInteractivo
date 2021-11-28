@@ -1,28 +1,31 @@
-let correlatedSumButton = document.getElementById("correlatedSum");
-correlatedSumButton.addEventListener('click',correlatedSumButtonCallback);
+let correlatedSumButton = $("#correlatedSum");
+correlatedSumButton.click(correlatedSumButtonCallback);
 function correlatedSumButtonCallback() { 
-    let soundPressureLevel1 = parseFloat(document.getElementById("soundPLevel1").value)
-    let soundPressureLevel2 = parseFloat(document.getElementById("soundPLevel2").value)
-    let phaseDifference = parseFloat(document.getElementById("phaseDifference").value)
+    let soundPressureLevel1 = parseFloat($("#soundPLevel1").val())
+    let soundPressureLevel2 = parseFloat($("#soundPLevel2").val())
+    let phaseDifference = parseFloat($("#phaseDifference").val())
     if (isNaN(soundPressureLevel1) || isNaN(soundPressureLevel2) || isNaN(phaseDifference)) {
-        document.getElementById("errorMessage").style.display = "block";
+        $("#errorMessage").css('display','block');
+        if (isNaN(soundPressureLevel1)) {
+
+        }
     }
     else{
-    document.getElementById("errorMessage").style.display = "none";
-    document.getElementById('sumResult').value = correlatedsum(soundPressureLevel1,soundPressureLevel2,phaseDifference);
+    $("#errorMessage").css('display','none');
+    $('#sumResult').val(correlatedsum(soundPressureLevel1,soundPressureLevel2,phaseDifference));
     }
 }
 
-let nonCorrelatedSumButton = document.getElementById("nonCorrelatedSum");
-nonCorrelatedSumButton.addEventListener('click',nonCorrelatedSumButtonCallback);
+let nonCorrelatedSumButton = $("#nonCorrelatedSum");
+nonCorrelatedSumButton.click(nonCorrelatedSumButtonCallback);
 function nonCorrelatedSumButtonCallback() { 
-    let soundPressureLevel1 = parseFloat(document.getElementById("soundPLevel1").value)
-    let soundPressureLevel2 = parseFloat(document.getElementById("soundPLevel2").value)
+    let soundPressureLevel1 = parseFloat($("#soundPLevel1").val())
+    let soundPressureLevel2 = parseFloat($("#soundPLevel2").val())
     if (isNaN(soundPressureLevel1) || isNaN(soundPressureLevel2)) {
-        document.getElementById("errorMessage").style.display = "block";
+        $("#errorMessage").css('display','block');
     }
     else{
-    document.getElementById("errorMessage").style.display = "none";
-    document.getElementById('sumResult').value = noncorrelatedsum(soundPressureLevel1,soundPressureLevel2);
+    $("#errorMessage").css('display','none');
+    $('#sumResult').val(noncorrelatedsum(soundPressureLevel1,soundPressureLevel2));
     }
 }
