@@ -14,12 +14,18 @@ class Signal {
         this.frequencies = [];
     }
     soundPowerLevel() {
-        return 10*Math.log10(this.soundPower/10**(-12));
+        if (this.soundPower<=0){
+            return 0
+        }
+        else{
+            return 10*Math.log10(this.soundPower/10**(-12));
+        }
     }
     soundPressureLevel (){
         return this.soundPowerLevel() - 10*Math.log10((4*Math.PI*(this.distance**2))/(this.Qfactor));
     }
     soundPressure(){
+        
         return (10**(this.soundPressureLevel()/20)) * 2 * (10**(-5));
     }
     addFrequency(newFrequency){
@@ -81,7 +87,7 @@ function compareNumbers(a, b) {
 
 //Suma correlacionada si las frecuencias coinciden, si no, no correlacionada
 function signalsum(Signal1,Signal2){
-    if (Signal1.frequencies.length===Signal2.frequencies.length && Signal1.frequencies.length > 0 && toString(Signal1.frequencies.sort(compareNumbers))==toString(Signal1.frequencies.sort(compareNumbers))) {
+    if (Signal1.frequencies.length===Signal2.frequencies.length && Signal1.frequencies.length > 0 && JSON.stringify(Signal1.frequencies.sort(compareNumbers))===JSON.stringify(Signal2.frequencies.sort(compareNumbers))) {
         
         //Tomo la frecuencia más baja del array
         let lowestFrequency = parseFloat(Signal1.frequencies.sort(compareNumbers)[0]);

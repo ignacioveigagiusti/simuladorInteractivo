@@ -246,6 +246,10 @@ iframe {
   border-color: #004086;
   background-color: whitesmoke; }
 
+.appTable_Input--error {
+  border-color: red;
+  border-style: solid; }
+
 #errorMessage {
   color: crimson;
   text-align: center;

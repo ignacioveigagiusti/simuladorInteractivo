@@ -55,15 +55,15 @@
                             <tr><th>Señal 1</th></tr>
                             <tr>
                                 <th class='col' scope='row'>Potencia (Watt)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='soundPower1' placeholder="0"></input></td>
+                                <td class='col'><input class='appTable appTable_Input' min='0' id='soundPower1' placeholder="0"></input></td>
                             </tr>
                             <tr>
                                 <th class='col' scope='row'>Distancia (Metros)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='distance1' placeholder="0"></input></td>
+                                <td class='col'><input class='appTable appTable_Input' min='0' id='distance1' placeholder="0"></input></td>
                             </tr>
                             <tr>
                                 <th class='col' scope='row'>Factor de Directividad (Q)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='Qfactor1' placeholder="0"></input></td>
+                                <td class='col'><input class='appTable appTable_Input' min='0' id='Qfactor1' placeholder="0"></input></td>
                             </tr>
                             <tr>
                                 <th class='col' scope='row'>Retraso inicial (Segundos)</th>
@@ -73,10 +73,10 @@
                                 <th class='col' scope='row'>Frecuencias</th>
                                 <td class='col'>
                                     <div class='appTable appTable_frequencyContainer'>
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency1signal1' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency2signal1' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency3signal1' placeholder="0"></input>  
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency4signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency1signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency2signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency3signal1' placeholder="0"></input>  
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency4signal1' placeholder="0"></input>
                                     </div>    
                                 </td>
                             </tr>
@@ -99,15 +99,15 @@
                             <th>Señal 2</th>
                             <tr>
                                 <th class='col' scope='row'>Potencia (Watt)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='soundPower2' placeholder="0"></input></td>
+                                <td class='col'><input class='appTable appTable_Input' min='0' id='soundPower2' placeholder="0"></input></td>
                             </tr>
                             <tr>
                                 <th class='col' scope='row'>Distancia (Metros)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='distance2' placeholder="0"></input></td>
+                                <td class='col'><input class='appTable appTable_Input' min='0' id='distance2' placeholder="0"></input></td>
                             </tr>
                             <tr>
                                 <th class='col' scope='row'>Factor de Directividad (Q)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='Qfactor2' placeholder="0"></input></td>
+                                <td class='col'><input class='appTable appTable_Input' min='0' id='Qfactor2' placeholder="0"></input></td>
                             </tr>
                             <tr>
                                 <th class='col' scope='row'>Retraso inicial (Segundos)</th>
@@ -117,10 +117,10 @@
                                 <th class='col' scope='row'>Frecuencias</th>
                                 <td class='col'>
                                     <div class='appTable appTable_frequencyContainer'>
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency1signal2' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency2signal2' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency3signal2' placeholder="0"></input>    
-                                        <input class='appTable appTable_Input appTable_Input--f' id='frequency4signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency1signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency2signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency3signal2' placeholder="0"></input>    
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency4signal2' placeholder="0"></input>
                                     </div>    
                                 </td>
                             </tr>
@@ -172,7 +172,6 @@
         <h6 class="rights">© Todos los derechos reservados</h6>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src='js/main.js'></script>
     <script src='js/signalsum.js'></script>
 </body>
