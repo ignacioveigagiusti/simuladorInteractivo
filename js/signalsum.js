@@ -7,6 +7,11 @@ if (localStorage.getItem("Signal1") === null && localStorage.getItem("Signal1") 
     let Signal2 = JSON.parse(localStorage.getItem('Signal2'));
 }    
 
+$('.appTable_Input--f').change(function(){
+    if ($('.appTable_Input--f').val()<=0){
+        $('.appTable_Input--f').val('')
+    }    
+})
 
 //función Callback para traer señales anteriores
 
@@ -121,39 +126,13 @@ function calculateCallback() {
         Signal2.addFrequency(parseFloat($('#frequency3signal2').val()));
         Signal2.addFrequency(parseFloat($('#frequency4signal2').val()));
         
-        //Modificación de frecuencias inválidas
-        if ($('#frequency1signal1').val()<=0){
-            $('#frequency1signal1').val('')
-        }
-        if ($('#frequency2signal1').val()<=0){
-            $('#frequency2signal1').val('')
-        }
-        if ($('#frequency3signal1').val()<=0){
-            $('#frequency3signal1').val('')
-        }
-        if ($('#frequency4signal1').val()<=0){
-            $('#frequency4signal1').val('')
-        }
-        if ($('#frequency1signal2').val()<=0){
-            $('#frequency1signal2').val('')
-        }
-        if ($('#frequency2signal2').val()<=0){
-            $('#frequency2signal2').val('')
-        }
-        if ($('#frequency3signal2').val()<=0){
-            $('#frequency3signal2').val('')
-        }
-        if ($('#frequency4signal2').val()<=0){
-            $('#frequency4signal2').val('')
-        }
-
         //Almaceno
         localStorage.setItem('Signal1', JSON.stringify(Signal1));
         localStorage.setItem('Signal2', JSON.stringify(Signal2));    
         
         
         //Calculo
-        $('#signalSumResult').html(signalsum(Signal1,Signal2));
+        $('#signalSumResult').append(` ${signalsum(Signal1,Signal2)}`);
         $('#soundPowerLevel1').val(parseInt(Signal1.soundPowerLevel()));
         $('#soundPressureLevel1').val(parseInt(Signal1.soundPressureLevel()));
         $('#soundPressure1').val(parseInt(Signal1.soundPressure()));
