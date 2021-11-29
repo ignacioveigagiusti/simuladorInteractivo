@@ -132,7 +132,7 @@ function calculateCallback() {
         
         
         //Calculo
-        $('#signalSumResult').append(` ${signalsum(Signal1,Signal2)}`);
+        $('#signalSumResult').html(signalsum(Signal1,Signal2));
         $('#soundPowerLevel1').val(parseInt(Signal1.soundPowerLevel()));
         $('#soundPressureLevel1').val(parseInt(Signal1.soundPressureLevel()));
         $('#soundPressure1').val(parseInt(Signal1.soundPressure()));
