@@ -13,6 +13,17 @@ $('.appTable_Input--f').change(function(){
     }    
 })
 
+//Parámetros para el gráfico
+let samplerate=1024;
+let timeStart=0;
+let timeStop=2;
+let timeStep=(1/samplerate);
+let timeVector=[];
+let signalSamples=[];
+for (let i = 0; i < samplerate; i++) {
+    timeVector.push((timeStop-timeStart)*(i/(samplerate-1)));
+}
+
 //función Callback para traer señales anteriores
 
 let retrieveLastSignal = $("#retrieveLastSignal");
@@ -132,13 +143,107 @@ function calculateCallback() {
         
         
         //Calculo
+        $('#signalSumResult').hide();
         $('#signalSumResult').html(signalsum(Signal1,Signal2));
+        $('#signalSumResult').fadeIn('slow');
+        $('#soundPowerLevel1').hide();
         $('#soundPowerLevel1').val(parseInt(Signal1.soundPowerLevel()));
+        $('#soundPowerLevel1').fadeIn('slow');
+        $('#soundPressureLevel1').hide();
         $('#soundPressureLevel1').val(parseInt(Signal1.soundPressureLevel()));
+        $('#soundPressureLevel1').fadeIn('slow');
+        $('#soundPressure1').hide();
         $('#soundPressure1').val(parseInt(Signal1.soundPressure()));
+        $('#soundPressure1').fadeIn('slow');
+        $('#soundPowerLevel2').hide();
         $('#soundPowerLevel2').val(parseInt(Signal2.soundPowerLevel()));
+        $('#soundPowerLevel2').fadeIn('slow');
+        $('#soundPressureLevel2').hide();
         $('#soundPressureLevel2').val(parseInt(Signal2.soundPressureLevel()));
+        $('#soundPressureLevel2').fadeIn('slow');
+        $('#soundPressure2').hide();
         $('#soundPressure2').val(parseInt(Signal2.soundPressure()));
+        $('#soundPressure2').fadeIn('slow');
+
+        //Valores de y para el gráfico
+        for (let i = 0; i < samplerate; i++) {
+            let lowestFrequency1 = parseFloat(Signal1.frequencies.sort(compareNumbers)[0])
+            let phase1 = 2*Math.PI*lowestFrequency1*Signal1.timeDelay + ((Signal1.distance) % (343/lowestFrequency1));
+            var y1f1;
+            var y1f2;
+            var y1f3;
+            var y1f4;
+            var y2f1;
+            var y2f2;
+            var y2f3;
+            var y2f4;
+            if (isNaN(Signal1.frequencies[0])) {
+                y1f1 = 0;
+            } else {
+            y1f1 = Math.sin(2 * Math.PI * Signal1.frequencies[0] * timeVector[i] + phase1);        
+            }
+        
+            if (isNaN(Signal1.frequencies[1])) {
+                y1f2 = 0;
+            } else {
+            y1f2 = Math.sin(2 * Math.PI * Signal1.frequencies[1] * timeVector[i] + phase1);
+            }
+        
+            if (isNaN(Signal1.frequencies[2])) {
+                y1f3 = 0;
+            } else {
+            y1f3 = Math.sin(2 * Math.PI * Signal1.frequencies[2] * timeVector[i] + phase1);    
+            }
+        
+            if (isNaN(Signal1.frequencies[3])) {
+                y1f4 = 0;
+            } else {
+            y1f4 = Math.sin(2 * Math.PI * Signal1.frequencies[3] * timeVector[i] + phase1);
+            }
+        
+            let y1 = Signal1.soundPressureLevel()*(y1f1 + y1f2 + y1f3 + y1f4);
+        
+            let lowestFrequency2 = parseFloat(Signal2.frequencies.sort(compareNumbers)[0])
+            let phase2 = 2*Math.PI*lowestFrequency2*Signal2.timeDelay + ((Signal2.distance) % (343/lowestFrequency2));
+            
+            if (isNaN(Signal2.frequencies[0])) {
+                y2f1 = 0;
+            } else {
+            y2f1 = Math.sin(2 * Math.PI * Signal2.frequencies[0] * timeVector[i] + phase2); 
+            }    
+            
+            if (isNaN(Signal2.frequencies[1])) {
+                y2f2 = 0;
+            } else {
+            y2f2 = Math.sin(2 * Math.PI * Signal2.frequencies[1] * timeVector[i] + phase2);   
+            }    
+        
+            if (isNaN(Signal2.frequencies[2])) {
+                y2f3 = 0;
+            } else {
+            y2f3 = Math.sin(2 * Math.PI * Signal2.frequencies[2] * timeVector[i] + phase2);
+            }    
+        
+            if (isNaN(Signal2.frequencies[3])) {
+                y2f4 = 0;
+            } else {
+            y2f4 = Math.sin(2 * Math.PI * Signal2.frequencies[3] * timeVector[i] + phase2);
+            }    
+        
+            let y2 = Signal2.soundPressureLevel()*(y2f1 + y2f2 + y2f3 + y2f4);
+         
+            let y = y1 + y2;
+            
+            signalSamples.push(y);
+        }
+        
+        //Grafico
+        SIGNAL = document.getElementById('signalPlot');
+        Plotly.react( SIGNAL, [{
+        x: timeVector,
+        y: signalSamples }]);
+
+        $('#signalPlot').slideDown("slow")
     }
 }
 
@@ -148,4 +253,4 @@ document.addEventListener("keyup", function(event) {
         event.preventDefault();
         $("#calculate").click();
     }
-});
+})
