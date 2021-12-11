@@ -48,11 +48,21 @@
     html{
         font-size: 100%;
     }
+
+    .header__pagetitle{
+        font-size: 1rem;
+        line-height: 2rem;
+    }
 }
 
 @media screen and (min-width: 655px) and (max-width: 768px) {
     html{
         font-size: 100%;
+    }
+
+    .header__pagetitle{
+        font-size: 1rem;
+        line-height: 2rem;
     }
     
     .servicio{
@@ -81,10 +91,6 @@
         flex-wrap: wrap;
     }
 
-    h1{
-        font-size: 2em;    
-    }
-
     h2{
         font-size: 1.75rem;
         text-align: start;    
@@ -111,6 +117,7 @@
         gap: 1vw;
         .header__pagetitle{
             flex-direction: row;
+            font-size: 2em; 
         }
     }
 

@@ -2,6 +2,11 @@ html{
     font-size: 50%;
 }
 
+h1{
+    font-size: 2rem;
+    line-height: 4rem;
+}
+
 body{
     display: grid;
     grid-template-rows: auto 1fr auto;

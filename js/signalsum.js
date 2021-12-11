@@ -167,6 +167,7 @@ function calculateCallback() {
         $('#soundPressure2').fadeIn('slow');
 
         //Valores de y para el gráfico
+        signalSamples = [];
         for (let i = 0; i < samplerate; i++) {
             let lowestFrequency1 = parseFloat(Signal1.frequencies.sort(compareNumbers)[0])
             let phase1 = 2*Math.PI*lowestFrequency1*Signal1.timeDelay + ((Signal1.distance) % (343/lowestFrequency1));
@@ -202,10 +203,10 @@ function calculateCallback() {
             y1f4 = Math.sin(2 * Math.PI * Signal1.frequencies[3] * timeVector[i] + phase1);
             }
         
-            let y1 = Signal1.soundPressureLevel()*(y1f1 + y1f2 + y1f3 + y1f4);
+            let y1 = Signal1.soundPressure()*(y1f1 + y1f2 + y1f3 + y1f4);
             
             if (y1==0) {
-                y1 = Signal1.soundPressureLevel()*Math.sin(2 * Math.PI * 3 * timeVector[i]);
+                y1 = Signal1.soundPressure()*Math.sin(2 * Math.PI * 3 * timeVector[i]);
             }
 
             let lowestFrequency2 = parseFloat(Signal2.frequencies.sort(compareNumbers)[0])
@@ -235,10 +236,10 @@ function calculateCallback() {
             y2f4 = Math.sin(2 * Math.PI * Signal2.frequencies[3] * timeVector[i] + phase2);
             }    
         
-            let y2 = Signal2.soundPressureLevel()*(y2f1 + y2f2 + y2f3 + y2f4);
+            let y2 = Signal2.soundPressure()*(y2f1 + y2f2 + y2f3 + y2f4);
          
             if (y2==0) {
-                y2 = Signal2.soundPressureLevel()*Math.sin(2 * Math.PI * 7 * timeVector[i]);
+                y2 = Signal2.soundPressure()*Math.sin(2 * Math.PI * 7 * timeVector[i]);
             }
 
             let y = y1 + y2;

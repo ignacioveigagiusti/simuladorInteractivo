@@ -43,6 +43,10 @@ ul {
 html {
   font-size: 50%; }
 
+h1 {
+  font-size: 2rem;
+  line-height: 4rem; }
+
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -261,7 +265,8 @@ iframe {
 .plotContainer {
   overflow: auto;
   display: flex;
-  align-self: center; }
+  align-self: center;
+  max-width: 80vw; }
 
 #signalPlot {
   display: none;
@@ -301,8 +306,8 @@ h1 {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   overflow: hidden;
-  font-size: 1.15rem;
-  line-height: 2rem; }
+  font-size: 2rem;
+  line-height: 4rem; }
 
 h2 {
   text-align: center;
@@ -642,11 +647,17 @@ article {
 
 @media screen and (min-width: 450px) and (max-width: 655px) {
   html {
-    font-size: 100%; } }
+    font-size: 100%; }
+  .header__pagetitle {
+    font-size: 1rem;
+    line-height: 2rem; } }
 
 @media screen and (min-width: 655px) and (max-width: 768px) {
   html {
     font-size: 100%; }
+  .header__pagetitle {
+    font-size: 1rem;
+    line-height: 2rem; }
   .servicio {
     display: flex;
     flex-direction: column;
@@ -663,8 +674,6 @@ article {
   .navbar-expand-md .navbar-nav {
     flex-direction: row;
     flex-wrap: wrap; }
-  h1 {
-    font-size: 2em; }
   h2 {
     font-size: 1.75rem;
     text-align: start; }
@@ -680,7 +689,8 @@ article {
     grid-template-areas: 'logo pagetitle' 'logo navbar';
     gap: 1vw; }
     .header .header__pagetitle {
-      flex-direction: row; }
+      flex-direction: row;
+      font-size: 2em; }
   .indexsection h2 {
     text-align: center; }
   .indexline {

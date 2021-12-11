@@ -8,8 +8,8 @@ function correlatedSumButtonCallback() {
         $("#errorMessage").slideDown('slow');
     }
     else{
-        $("#errorMessage").css('display','none');
-        $('#sumResult').val(correlatedsum(soundPressureLevel1,soundPressureLevel2,phaseDifference));
+    $("#errorMessage").slideUp('slow');
+    $('#sumResult').val(correlatedsum(soundPressureLevel1,soundPressureLevel2,phaseDifference));
     }
     if (isNaN(soundPressureLevel1)) {
         $("#soundPLevel1").css({'border-color':'red','border-style':'solid'}).hide().fadeIn();
@@ -37,7 +37,7 @@ function nonCorrelatedSumButtonCallback() {
     let soundPressureLevel1 = parseFloat($("#soundPLevel1").val())
     let soundPressureLevel2 = parseFloat($("#soundPLevel2").val())
     if (isNaN(soundPressureLevel1) || isNaN(soundPressureLevel2)) {
-        $("#errorMessage").css('display','block');
+        $("#errorMessage").slideDown('slow');
         if (isNaN(soundPressureLevel1)) {
             $("#soundPLevel1").css({'border-color':'red','border-style':'solid'});
         }
@@ -49,7 +49,7 @@ function nonCorrelatedSumButtonCallback() {
     $("#soundPLevel1").css({'border-color':'','border-style':''});
     $("#soundPLevel2").css({'border-color':'','border-style':''});
     $("#phaseDifference").css({'border-color':'','border-style':''});
-    $("#errorMessage").css('display','none');
+    $("#errorMessage").slideUp('slow');
     $('#sumResult').val(noncorrelatedsum(soundPressureLevel1,soundPressureLevel2));
     }
 }
