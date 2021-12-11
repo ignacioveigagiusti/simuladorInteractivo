@@ -74,10 +74,10 @@
                                 <th class='col' scope='row'>Frecuencias</th>
                                 <td class='col'>
                                     <div class='appTable appTable_frequencyContainer'>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency1signal1' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency2signal1' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency3signal1' placeholder="0"></input>  
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency4signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency1signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency2signal1' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency3signal1' placeholder="0"></input>  
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency4signal1' placeholder="0"></input>
                                     </div>    
                                 </td>
                             </tr>
@@ -118,10 +118,10 @@
                                 <th class='col' scope='row'>Frecuencias</th>
                                 <td class='col'>
                                     <div class='appTable appTable_frequencyContainer'>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency1signal2' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency2signal2' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency3signal2' placeholder="0"></input>    
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency4signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency1signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency2signal2' placeholder="0"></input>
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency3signal2' placeholder="0"></input>    
+                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency4signal2' placeholder="0"></input>
                                     </div>    
                                 </td>
                             </tr>
@@ -162,9 +162,9 @@
                 </div>
             </div>
         </section>
-        <section>
-            <div id='signalPlot'style="display: none"></div>
-        </section>
+        <div class='plotContainer'>
+            <div id='signalPlot'></div>
+        </div>
 
     </main>
     <footer>

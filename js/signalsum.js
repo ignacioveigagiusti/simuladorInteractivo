@@ -17,6 +17,7 @@ $('.appTable_Input--f').change(function(){
 let samplerate=1024;
 let timeStart=0;
 let timeStop=2;
+
 let timeStep=(1/samplerate);
 let timeVector=[];
 let signalSamples=[];
@@ -84,32 +85,32 @@ function calculateCallback() {
     
     //Chequeo de datos
     if (isNaN(soundPower1) || isNaN(distance1) || isNaN(Qfactor1) || isNaN(timeDelay1) || isNaN(soundPower2) || isNaN(distance2) || isNaN(Qfactor2) || isNaN(timeDelay2) || soundPower1<0 || distance1<=0 || Qfactor1<=0 || soundPower2<0 || distance2<=0 || Qfactor2<=0) {
-        $("#signalSumTag").html('Alguno de los valores ingresados no es correcto!');
+        $("#signalSumTag").html('Alguno de los valores ingresados no es correcto!').hide().fadeIn('slow');
         $("#signalSumTag").css('color','crimson');
         $("#signalSumResult").css('display','none');
         if (isNaN(soundPower1) || soundPower1<0){
-            $("#soundPower1").addClass('appTable_Input--error');
+            $("#soundPower1").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
         if (isNaN(distance1) || distance1<=0){
-            $("#distance1").addClass('appTable_Input--error');
+            $("#distance1").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
         if (isNaN(Qfactor1) || Qfactor1<=0){
-            $("#Qfactor1").addClass('appTable_Input--error');
+            $("#Qfactor1").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
         if (isNaN(timeDelay1)){
-            $("#timeDelay1").addClass('appTable_Input--error');
+            $("#timeDelay1").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
         if (isNaN(soundPower2) || soundPower2<0){
-            $("#soundPower2").addClass('appTable_Input--error');
+            $("#soundPower2").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
         if (isNaN(distance2) || distance2<=0){
-            $("#distance2").addClass('appTable_Input--error');
+            $("#distance2").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
         if (isNaN(Qfactor2) || Qfactor2<=0){
-            $("#Qfactor2").addClass('appTable_Input--error');
+            $("#Qfactor2").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
         if (isNaN(timeDelay2)){
-            $("#timeDelay2").addClass('appTable_Input--error');
+            $("#timeDelay2").addClass('appTable_Input--error').hide().fadeIn('slow');
         }
     }
     else{
@@ -202,7 +203,11 @@ function calculateCallback() {
             }
         
             let y1 = Signal1.soundPressureLevel()*(y1f1 + y1f2 + y1f3 + y1f4);
-        
+            
+            if (y1==0) {
+                y1 = Signal1.soundPressureLevel()*Math.sin(2 * Math.PI * 3 * timeVector[i]);
+            }
+
             let lowestFrequency2 = parseFloat(Signal2.frequencies.sort(compareNumbers)[0])
             let phase2 = 2*Math.PI*lowestFrequency2*Signal2.timeDelay + ((Signal2.distance) % (343/lowestFrequency2));
             
@@ -232,20 +237,33 @@ function calculateCallback() {
         
             let y2 = Signal2.soundPressureLevel()*(y2f1 + y2f2 + y2f3 + y2f4);
          
+            if (y2==0) {
+                y2 = Signal2.soundPressureLevel()*Math.sin(2 * Math.PI * 7 * timeVector[i]);
+            }
+
             let y = y1 + y2;
-            
             signalSamples.push(y);
         }
         
         //Grafico
+        var layout = { 
+            title: 'Suma de Señales',
+            font: {size: 10},
+            autosize: true,
+        };
         SIGNAL = document.getElementById('signalPlot');
-        Plotly.react( SIGNAL, [{
+        Plotly.newPlot( SIGNAL, [{
         x: timeVector,
-        y: signalSamples }]);
+        y: signalSamples }],
+        layout);
 
         $('#signalPlot').slideDown("slow")
     }
 }
+
+window.onresize = function() {
+    Plotly.Plots.resize(SIGNAL);
+};
 
 // Ejecutar con 'Enter'
 document.addEventListener("keyup", function(event) {

@@ -250,10 +250,22 @@ iframe {
   border-color: red;
   border-style: solid; }
 
+#signalSumResult {
+  padding: 0 1rem; }
+
 #errorMessage {
   color: crimson;
   text-align: center;
   display: none; }
+
+.plotContainer {
+  overflow: auto;
+  display: flex;
+  align-self: center; }
+
+#signalPlot {
+  display: none;
+  min-width: 800px; }
 
 /*Nosotros*/
 form fieldset {
