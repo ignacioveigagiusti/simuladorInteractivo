@@ -13,10 +13,11 @@ $('.appTable_Input--f').change(function(){
     }    
 })
 
+    
 //Parámetros para el gráfico
 let samplerate=1024;
 let timeStart=0;
-let timeStop=2;
+let timeStop=1;
 
 let timeStep=(1/samplerate);
 let timeVector=[];
@@ -144,27 +145,13 @@ function calculateCallback() {
         
         
         //Calculo
-        $('#signalSumResult').hide();
-        $('#signalSumResult').html(signalsum(Signal1,Signal2));
-        $('#signalSumResult').fadeIn('slow');
-        $('#soundPowerLevel1').hide();
-        $('#soundPowerLevel1').val(parseInt(Signal1.soundPowerLevel()));
-        $('#soundPowerLevel1').fadeIn('slow');
-        $('#soundPressureLevel1').hide();
-        $('#soundPressureLevel1').val(parseInt(Signal1.soundPressureLevel()));
-        $('#soundPressureLevel1').fadeIn('slow');
-        $('#soundPressure1').hide();
-        $('#soundPressure1').val(parseInt(Signal1.soundPressure()));
-        $('#soundPressure1').fadeIn('slow');
-        $('#soundPowerLevel2').hide();
-        $('#soundPowerLevel2').val(parseInt(Signal2.soundPowerLevel()));
-        $('#soundPowerLevel2').fadeIn('slow');
-        $('#soundPressureLevel2').hide();
-        $('#soundPressureLevel2').val(parseInt(Signal2.soundPressureLevel()));
-        $('#soundPressureLevel2').fadeIn('slow');
-        $('#soundPressure2').hide();
-        $('#soundPressure2').val(parseInt(Signal2.soundPressure()));
-        $('#soundPressure2').fadeIn('slow');
+        $('#signalSumResult').hide().html(signalsum(Signal1,Signal2)).fadeIn('slow');
+        $('#soundPowerLevel1').hide().val(parseInt(Signal1.soundPowerLevel())).fadeIn('slow');
+        $('#soundPressureLevel1').hide().val(parseInt(Signal1.soundPressureLevel())).fadeIn('slow');
+        $('#soundPressure1').hide().val(parseInt(Signal1.soundPressure())).fadeIn('slow');
+        $('#soundPowerLevel2').hide().val(parseInt(Signal2.soundPowerLevel())).fadeIn('slow');
+        $('#soundPressureLevel2').hide().val(parseInt(Signal2.soundPressureLevel())).fadeIn('slow');
+        $('#soundPressure2').hide().val(parseInt(Signal2.soundPressure())).fadeIn('slow');
 
         //Valores de y para el gráfico
         signalSamples = [];

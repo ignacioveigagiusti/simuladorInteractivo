@@ -153,6 +153,12 @@ iframe{
     text-align: center;
 }
 
+.para--note {
+    font-size: 0.8rem;
+    margin: 0;
+    text-align: justify;
+}
+
 .appTable{
     border-collapse: separate;
 }
@@ -183,6 +189,10 @@ iframe{
 #errorMessage{
     color:crimson;
     text-align: center;
+    display: none;
+}
+
+#variablesDetail {
     display: none;
 }
 

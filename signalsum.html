@@ -36,6 +36,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href='signalsum.html'>Suma Señales <span class="sr-only"></span></a>
                     </li>
+                    <!--<li class="nav-item active">
+                        <a class="nav-link" href='variables.html'>Variables <span class="sr-only"></span></a>
+                    </li>-->
                 </ul>
                 </div>
             </div>
@@ -45,8 +48,18 @@
         <section class='indexsection' style='padding-bottom:0'>
             <article>
                 <h2>Suma de Señales Acústicas</h2>
-                <p class='para' style='margin-bottom:0'>A partir de los datos ingresados se podrán calcular las siguientes variables acústicas para las señales individuales y su suma en la posición del receptor:</p>
+                <p class='para'>A partir de los datos ingresados se podrán calcular las siguientes variables acústicas para las señales individuales y su suma en la posición del receptor:</p>
             </article>
+            <article>
+                <p class='para para--note'><strong>Cómo funciona la app?</strong></p>
+                <p class='para para--note'>Para calcular la suma de las señales deseadas, las mismas se deberán crear con los siguientes parámetros:</p>
+                <p class='para para--note'><strong>Potencia:</strong> A qué potencia en Watts emite la fuente de sonido.</p>
+                <p class='para para--note'><strong>Distancia:</strong> A qué distancia se encuentra el receptor de esta fuente.</p>
+                <p class='para para--note'><strong>Factor de Directividad:</strong> Refiere a qué tan direccional es la fuente. Un Q=1 sería una fuente omnidireccional, Q=2 una fuente apoyada en el piso, Q=3 una fuente apoyada en el piso contra una pared y mientras sigue aumentando el Q, más direccional será la fuente.</p>
+                <p class='para para--note'><strong>Retraso Inicial:</strong> Cuánto tiempo tarda la fuente en comenzar a emitir.</p>
+                <p class='para para--note'><strong>Frecuencias:</strong> Se pueden aclarar hasta cuatro frecuencias que conformen la señal. Recordar que los seres humanos en general escuchamos frecuencias entre 20 y 20000 Hz.</p>
+            </article>
+
         </section>
         <section>
             <div class='container'>
@@ -165,7 +178,10 @@
         <section class='plotContainer'>
             <div id='signalPlot'></div>
         </section>
-
+        <section>
+            <div><button id='acousticVariables' class='btn btn-light' >Variables Acústicas Consideradas</button></div>
+            <p id='variablesDetail' class='para para--note'></p>
+        </section>
     </main>
     <footer>
         <ul class="socialMedia">

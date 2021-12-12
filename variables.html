@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suma de Niveles Acústicos</title>
+    <title>Variables</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -29,15 +29,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://isvacustica.netlify.app/">Inicio <span class="sr-only"></span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href='index.html'>Suma Niveles <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href='signalsum.html'>Suma Señales <span class="sr-only"></span></a>
                     </li>
-                    <!--<li class="nav-item active">
+                    <li class="nav-item active">
                         <a class="nav-link" href='variables.html'>Variables <span class="sr-only"></span></a>
-                    </li>-->
+                    </li>
                 </ul>
                 </div>
             </div>
@@ -46,52 +46,34 @@
     <main>
         <section class='indexsection'>
             <article>
-                <h2>Suma de Niveles de Presión Sonora</h2>
-                <p class='para'>La suma de niveles de presión sonora emitidas por dos fuentes de sonido distintas no es una simple suma aritmética, y su resultado depende de si estamos sumando 2 señales correlacionadas (la misma señal en 2 parlantes distintos, por ejemplo, algo que suele ocurrir en arreglos estéreo), o no correlacionadas (2 señales distintas).</p>
-                <p class='para'>Seleccione el tipo de suma que desea realizar con las señales ingresadas:</p>
+                <h2>Definición de Variables Acústicas</h2>
+                <p class='para'>Aquí puedes definir las variables acústicas a utilizar en los cálculos a realizar en las otras páginas. La velocidad del sonido suele ser 343 m/s en condiciones normales de temperatura y presión atmosférica, mientras que la presión de referencia en el aire es de 20 μPa. Si el medio de propagación fuese agua, la velocidad sería de 1480 m/s y la presión de referencia 1 μPa.</p>
             </article>
             <table class="table">
                 <tbody>
                     <tr>
-                        <th scope="row">Nivel de Presión Sonora 1 (dB)</th>
+                        <th scope="row">Velocidad del Sonido en el medio (m/s)</th>
                         <td>
-                            <input id='soundPLevel1' placeholder="0"></input>
+                            <input id='soundSpeed' placeholder="343"></input>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Nivel de Presión Sonora 2 (dB)</th>
+                        <th scope="row">Presión de Referencia (Pascales)</th>
                         <td>
-                            <input id='soundPLevel2' placeholder="0"></input>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Diferencia de Fase (grados)</th>
-                        <td>
-                            <input id='phaseDifference' placeholder="0"></input>
+                            <input id='referencePressure' placeholder="0.00002"></input>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <div class='btngroup'>
-                                <button id='correlatedSum' class='btn btn-primary' >Suma Correlacionada</button>
-                                <button id='nonCorrelatedSum' class='btn btn-primary' >Suma No Correlacionada</button>
+                                <button id='submitVars' class='btn btn-primary' >Enviar Valores</button>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Suma</th>
-                        <td>
-                            <input readonly id='sumResult'></input>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </section>
         <p><strong id='errorMessage'>Alguno de los valores ingresados no es correcto!</strong></p>
-        <section>
-            <div><button id='acousticVariables' class='btn btn-light' >Variables Acústicas Consideradas</button></div>
-            <p id='variablesDetail' class='para para--note'></p>
-        </section>
     </main>
     <footer>
         <ul class="socialMedia">
@@ -104,6 +86,6 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='js/main.js'></script>
-    <script src='js/dBsum.js'></script>
+    <script src='js/variables.js'></script>
 </body>
 </html>

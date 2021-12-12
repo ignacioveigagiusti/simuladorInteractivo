@@ -3,6 +3,16 @@
 
 //PARA TRABAJAR CON ARRAYS: Método dentro de la clase para armar un array de frecuencias que conforman la señal
 
+//Llamada a txt con AJAX para mostrar las variables consideradas:
+
+$(document).ready(function(){
+    $("#acousticVariables").click(function(){
+      $.ajax({url: "./data/variables.txt", success: function(result){
+        $("#variablesDetail").html(result).slideToggle('fast');
+      }});
+    });
+});
+
 //Clases:
 
 class Signal {
@@ -29,7 +39,7 @@ class Signal {
         return (10**(this.soundPressureLevel()/20)) * 2 * (10**(-5));
     }
     addFrequency(newFrequency){
-        if (newFrequency >= 0 && newFrequency !== null) {
+        if (newFrequency > 0 && newFrequency !== null) {
             this.frequencies.push(newFrequency);
         }
     }
@@ -64,7 +74,7 @@ function noncorrelatedsum(spl1,spl2){
     return noncorsumalert;
 }
 
-function correlatedsumDirect(spl1,spl2,phasediff){
+/*function correlatedsumDirect(spl1,spl2,phasediff){
     corsum = correlatedsum(spl1,spl2,phasediff);
     let sumResult = document.getElementById('sumResult');
     let corSumResult = document.createElement("corSumResult");
@@ -78,7 +88,7 @@ function noncorrelatedsumDirect(spl1,spl2){
     let nonCorSumResult = document.createElement("nonCorSumResult");
     nonCorSumResult.innerHTML = '<input readonly>' + noncorcum + '</input>';
     sumResult.appendChild(nonCorSumResult);
-}
+}*/
 
 //Funcion comparadora para poder ordenar ascendentemente arrays numéricos con el método sort
 function compareNumbers(a, b) {

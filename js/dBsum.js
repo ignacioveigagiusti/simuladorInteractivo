@@ -3,7 +3,7 @@ correlatedSumButton.click(correlatedSumButtonCallback);
 function correlatedSumButtonCallback() { 
     let soundPressureLevel1 = parseFloat($("#soundPLevel1").val());
     let soundPressureLevel2 = parseFloat($("#soundPLevel2").val());
-    let phaseDifference = parseFloat($("#phaseDifference").val());
+    let phaseDifference = (parseFloat($("#phaseDifference").val())*(Math.PI/180));
     if (isNaN(soundPressureLevel1) || isNaN(soundPressureLevel2) || isNaN(phaseDifference)) {
         $("#errorMessage").slideDown('slow');
     }
