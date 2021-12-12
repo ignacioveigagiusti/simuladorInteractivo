@@ -268,7 +268,8 @@ iframe {
   display: none; }
 
 #variablesDetail {
-  display: none; }
+  display: none;
+  font-weight: bold; }
 
 .plotContainer {
   overflow: auto;
