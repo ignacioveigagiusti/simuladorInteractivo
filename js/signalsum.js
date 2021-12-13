@@ -269,6 +269,7 @@ $(document).ready(function(){
             soundSpeed = parseInt(result[0].soundSpeed);
             referencePressure = parseFloat(result[0].referencePressure);
             referencePower = parseFloat(result[0].referencePower);
+            calculateCallback()
         }});
         $('#air').addClass('active')
         $('#water').removeClass('active')
@@ -278,6 +279,7 @@ $(document).ready(function(){
             soundSpeed = parseInt(result[1].soundSpeed);
             referencePressure = parseFloat(result[1].referencePressure);
             referencePower = ((result[1].referencePressure)**2)/(result[1].density*result[1].soundSpeed);
+            calculateCallback()
         }});
         $('#air').removeClass('active')
         $('#water').addClass('active')
