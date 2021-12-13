@@ -3,15 +3,13 @@
 
 //PARA TRABAJAR CON ARRAYS: Método dentro de la clase para armar un array de frecuencias que conforman la señal
 
-//Llamada a txt con AJAX para mostrar las variables consideradas:
+//Variables
 
-$(document).ready(function(){
-    $("#acousticVariables").click(function(){
-      $.ajax({url: "./data/variables.txt", success: function(result){
-        $("#variablesDetail").html(result).slideToggle('fast');
-      }});
-    });
-});
+$.ajax({url: "./data/variables.json", success: function(result){
+    soundSpeed = parseInt(result[0].soundSpeed);
+    referencePressure = parseFloat(result[0].referencePressure);
+    referencePower = parseFloat(result[0].referencePower);
+}});
 
 //Clases:
 
@@ -28,7 +26,7 @@ class Signal {
             return 0
         }
         else{
-            return 10*Math.log10(this.soundPower/10**(-12));
+            return 10*Math.log10(this.soundPower/referencePower);
         }
     }
     soundPressureLevel (){
@@ -36,7 +34,7 @@ class Signal {
     }
     soundPressure(){
         
-        return (10**(this.soundPressureLevel()/20)) * 2 * (10**(-5));
+        return (10**(this.soundPressureLevel()/20)) * referencePressure;
     }
     addFrequency(newFrequency){
         if (newFrequency > 0 && newFrequency !== null) {
@@ -49,11 +47,11 @@ class Signal {
 
 function correlatedsum(spl1,spl2,phasediff){
     //Se convierte Nivel a Presión Eficaz para simplificar las fórmulas
-    p1 = ( 10**(spl1/20) ) * 2 * (10**(-5));
-    p2 = ( 10**(spl2/20) ) * 2 * (10**(-5));
+    p1 = ( 10**(spl1/20) ) * referencePressure;
+    p2 = ( 10**(spl2/20) ) * referencePressure;
     corsumpef = Math.sqrt( (p1**2) + (p2**2) + (2*p1*p2*(Math.cos(phasediff))) );
     if (corsumpef>0) {
-        corsum = parseInt(20*( Math.log10 ( (corsumpef) / (20*(10**(-6))) )));
+        corsum = parseInt(20*( Math.log10 ( (corsumpef) / (referencePressure) )));
     }
     else {
         corsum = 0;
@@ -103,7 +101,7 @@ function signalsum(Signal1,Signal2){
         let lowestFrequency = parseFloat(Signal1.frequencies.sort(compareNumbers)[0]);
         
         //Calculo la diferencia de fase
-        let phaseDifference = 2*Math.PI*lowestFrequency*(Signal1.timeDelay-Signal2.timeDelay) + ((Signal1.distance-Signal2.distance) % (343/lowestFrequency));
+        let phaseDifference = 2*Math.PI*lowestFrequency*(Signal1.timeDelay-Signal2.timeDelay) + ((Signal1.distance-Signal2.distance) % (soundSpeed/lowestFrequency));
         
         let signalsum = correlatedsum(Signal1.soundPressureLevel(),Signal2.soundPressureLevel(),phaseDifference);
         return signalsum;

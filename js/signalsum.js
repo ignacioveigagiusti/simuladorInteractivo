@@ -148,16 +148,16 @@ function calculateCallback() {
         $('#signalSumResult').hide().html(signalsum(Signal1,Signal2)).fadeIn('slow');
         $('#soundPowerLevel1').hide().val(parseInt(Signal1.soundPowerLevel())).fadeIn('slow');
         $('#soundPressureLevel1').hide().val(parseInt(Signal1.soundPressureLevel())).fadeIn('slow');
-        $('#soundPressure1').hide().val(parseInt(Signal1.soundPressure())).fadeIn('slow');
+        $('#soundPressure1').hide().val(parseFloat(Signal1.soundPressure()).toFixed(2)).fadeIn('slow');
         $('#soundPowerLevel2').hide().val(parseInt(Signal2.soundPowerLevel())).fadeIn('slow');
         $('#soundPressureLevel2').hide().val(parseInt(Signal2.soundPressureLevel())).fadeIn('slow');
-        $('#soundPressure2').hide().val(parseInt(Signal2.soundPressure())).fadeIn('slow');
+        $('#soundPressure2').hide().val(parseFloat(Signal2.soundPressure()).toFixed(2)).fadeIn('slow');
 
         //Valores de y para el gráfico
         signalSamples = [];
         for (let i = 0; i < samplerate; i++) {
             let lowestFrequency1 = parseFloat(Signal1.frequencies.sort(compareNumbers)[0])
-            let phase1 = 2*Math.PI*lowestFrequency1*Signal1.timeDelay + ((Signal1.distance) % (343/lowestFrequency1));
+            let phase1 = 2*Math.PI*lowestFrequency1*Signal1.timeDelay + ((Signal1.distance) % (soundSpeed/lowestFrequency1));
             var y1f1;
             var y1f2;
             var y1f3;
@@ -197,7 +197,7 @@ function calculateCallback() {
             }
 
             let lowestFrequency2 = parseFloat(Signal2.frequencies.sort(compareNumbers)[0])
-            let phase2 = 2*Math.PI*lowestFrequency2*Signal2.timeDelay + ((Signal2.distance) % (343/lowestFrequency2));
+            let phase2 = 2*Math.PI*lowestFrequency2*Signal2.timeDelay + ((Signal2.distance) % (soundSpeed/lowestFrequency2));
             
             if (isNaN(Signal2.frequencies[0])) {
                 y2f1 = 0;
@@ -260,3 +260,26 @@ document.addEventListener("keyup", function(event) {
         $("#calculate").click();
     }
 })
+
+//Llamada a json con AJAX para seleccionar si se desea modificar el medio:
+
+$(document).ready(function(){
+    $("#air").click(function(){
+        $.ajax({url: "./data/variables.json", success: function(result){
+            soundSpeed = parseInt(result[0].soundSpeed);
+            referencePressure = parseFloat(result[0].referencePressure);
+            referencePower = parseFloat(result[0].referencePower);
+        }});
+        $('#air').addClass('active')
+        $('#water').removeClass('active')
+    });
+    $("#water").click(function(){
+        $.ajax({url: "./data/variables.json", success: function(result){
+            soundSpeed = parseInt(result[1].soundSpeed);
+            referencePressure = parseFloat(result[1].referencePressure);
+            referencePower = ((result[1].referencePressure)**2)/(result[1].density*result[1].soundSpeed);
+        }});
+        $('#air').removeClass('active')
+        $('#water').addClass('active')
+    });
+});

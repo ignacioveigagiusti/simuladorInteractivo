@@ -58,6 +58,7 @@
                 <p class='para para--note'><strong>Factor de Directividad:</strong> Refiere a qué tan direccional es la fuente. Un Q=1 sería una fuente omnidireccional, Q=2 una fuente apoyada en el piso, Q=3 una fuente apoyada en el piso contra una pared y mientras sigue aumentando el Q, más direccional será la fuente.</p>
                 <p class='para para--note'><strong>Retraso Inicial:</strong> Cuánto tiempo tarda la fuente en comenzar a emitir.</p>
                 <p class='para para--note'><strong>Frecuencias:</strong> Se pueden aclarar hasta cuatro frecuencias que conformen la señal. Recordar que los seres humanos en general escuchamos frecuencias entre 20 y 20000 Hz.</p>
+                <p class='para para--note'><strong>Medio de Propagación:</strong> La velocidad del sonido suele ser 343 m/s en condiciones normales de temperatura y presión atmosférica, mientras que la presión de referencia en el aire es de 20 μPa. Si el medio de propagación fuese agua, la velocidad sería de 1480 m/s y la presión de referencia 1 μPa.</p>
             </article>
 
         </section>
@@ -179,8 +180,14 @@
             <div id='signalPlot'></div>
         </section>
         <section>
-            <div><button id='acousticVariables' class='btn btn-light' >Variables Acústicas Consideradas</button></div>
-            <p id='variablesDetail' class='para para--note'></p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Seleccionar Medio de Propagación
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <button id='air' class="dropdown-item active" type="button">Aire</a>
+                  <button id='water' class="dropdown-item" type="button">Agua</a>
+            </div>
         </section>
     </main>
     <footer>

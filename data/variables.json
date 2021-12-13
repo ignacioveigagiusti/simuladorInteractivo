@@ -1,0 +1,15 @@
+[
+    {
+    "id":"air",
+    "soundSpeed":"343",
+    "referencePressure":"0.00002",
+    "referencePower":"0.000000000001"
+    },
+    {
+    "id":"water",
+    "soundSpeed":"1480",
+    "referencePressure":"0.000001",
+    "density":"1000"
+    }
+]
+
