@@ -45,7 +45,7 @@
           </nav>   
     </header>
     <main>
-        <section class='indexsection' style='padding-bottom:0'>
+        <section class='indexsection'>
             <article>
                 <h2>Suma de Señales Acústicas</h2>
                 <p class='para'>A partir de los datos ingresados se podrán calcular las siguientes variables acústicas para las señales individuales y su suma en la posición del receptor:</p>
@@ -58,105 +58,104 @@
                 <p class='para para--note'><strong>Factor de Directividad:</strong> Refiere a qué tan direccional es la fuente. Un Q=1 sería una fuente omnidireccional, Q=2 una fuente apoyada en el piso, Q=3 una fuente apoyada en el piso contra una pared y mientras sigue aumentando el Q, más direccional será la fuente.</p>
                 <p class='para para--note'><strong>Retraso Inicial:</strong> Cuánto tiempo tarda la fuente en comenzar a emitir.</p>
                 <p class='para para--note'><strong>Frecuencias:</strong> Se pueden aclarar hasta cuatro frecuencias que conformen la señal. Recordar que los seres humanos en general escuchamos frecuencias entre 20 y 20000 Hz.</p>
-                <p class='para para--note'><strong>Medio de Propagación:</strong> La velocidad del sonido suele ser 343 m/s en condiciones normales de temperatura y presión atmosférica, mientras que la presión de referencia en el aire es de 20 μPa. Si el medio de propagación fuese agua, la velocidad sería de 1480 m/s y la presión de referencia 1 μPa.</p>
+                <p class='para para--note'><strong>Medio de Propagación:</strong> La velocidad del sonido suele ser 343 m/s en condiciones normales de temperatura y presión atmosférica, mientras que la presión de referencia en el aire es de 20 μPa. Si el medio de propagación fuese agua, la velocidad sería de 1480 m/s y la presión de referencia 1 μPa. También se puede elegir calcular utilizando las condiciones atmosféricas actuales de la Ciudad Autónoma de Buenos Aires, ya que la velocidad del sonido depende de la temperatura del medio.</p>
             </article>
-
         </section>
-        <section>
-            <div class='container'>
-                <div class='row'>
-                    <div class='col'>
-                        <table class='appTable container'>
-                            <tr><th>Señal 1</th></tr>
-                            <tr>
-                                <th class='col' scope='row'>Potencia (Watt)</th>
-                                <td class='col'><input class='appTable appTable_Input' min='0' id='soundPower1' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Distancia (Metros)</th>
-                                <td class='col'><input class='appTable appTable_Input' min='0' id='distance1' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Factor de Directividad (Q)</th>
-                                <td class='col'><input class='appTable appTable_Input' min='0' id='Qfactor1' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Retraso inicial (Segundos)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='timeDelay1' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Frecuencias</th>
-                                <td class='col'>
-                                    <div class='appTable appTable_frequencyContainer'>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency1signal1' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency2signal1' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency3signal1' placeholder="0"></input>  
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency4signal1' placeholder="0"></input>
-                                    </div>    
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
-                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel1'></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
-                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel1'></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
-                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure1'></input></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class='col'>
-                        <table class='appTable container'>
-                            <th>Señal 2</th>
-                            <tr>
-                                <th class='col' scope='row'>Potencia (Watt)</th>
-                                <td class='col'><input class='appTable appTable_Input' min='0' id='soundPower2' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Distancia (Metros)</th>
-                                <td class='col'><input class='appTable appTable_Input' min='0' id='distance2' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Factor de Directividad (Q)</th>
-                                <td class='col'><input class='appTable appTable_Input' min='0' id='Qfactor2' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Retraso inicial (Segundos)</th>
-                                <td class='col'><input class='appTable appTable_Input' id='timeDelay2' placeholder="0"></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Frecuencias</th>
-                                <td class='col'>
-                                    <div class='appTable appTable_frequencyContainer'>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency1signal2' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency2signal2' placeholder="0"></input>
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency3signal2' placeholder="0"></input>    
-                                        <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency4signal2' placeholder="0"></input>
-                                    </div>    
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
-                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel2'></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
-                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel2'></input></td>
-                            </tr>
-                            <tr>
-                                <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
-                                <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure2'></input></td>
-                            </tr>
-                        </table>
+            <article>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col'>
+                            <table class='appTable container'>
+                                <tr><th>Señal 1</th></tr>
+                                <tr>
+                                    <th class='col' scope='row'>Potencia (Watt)</th>
+                                    <td class='col'><input class='appTable appTable_Input' min='0' id='soundPower1' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Distancia (Metros)</th>
+                                    <td class='col'><input class='appTable appTable_Input' min='0' id='distance1' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Factor de Directividad (Q)</th>
+                                    <td class='col'><input class='appTable appTable_Input' min='0' id='Qfactor1' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Retraso inicial (Segundos)</th>
+                                    <td class='col'><input class='appTable appTable_Input' id='timeDelay1' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Frecuencias</th>
+                                    <td class='col'>
+                                        <div class='appTable appTable_frequencyContainer'>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency1signal1' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency2signal1' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency3signal1' placeholder="0"></input>  
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency4signal1' placeholder="0"></input>
+                                        </div>    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
+                                    <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel1'></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
+                                    <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel1'></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
+                                    <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure1'></input></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class='col'>
+                            <table class='appTable container'>
+                                <th>Señal 2</th>
+                                <tr>
+                                    <th class='col' scope='row'>Potencia (Watt)</th>
+                                    <td class='col'><input class='appTable appTable_Input' min='0' id='soundPower2' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Distancia (Metros)</th>
+                                    <td class='col'><input class='appTable appTable_Input' min='0' id='distance2' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Factor de Directividad (Q)</th>
+                                    <td class='col'><input class='appTable appTable_Input' min='0' id='Qfactor2' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Retraso inicial (Segundos)</th>
+                                    <td class='col'><input class='appTable appTable_Input' id='timeDelay2' placeholder="0"></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Frecuencias</th>
+                                    <td class='col'>
+                                        <div class='appTable appTable_frequencyContainer'>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency1signal2' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency2signal2' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency3signal2' placeholder="0"></input>    
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency4signal2' placeholder="0"></input>
+                                        </div>    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Nivel de Potencia Acústica (dB)</th>
+                                    <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPowerLevel2'></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Nivel de Presión Sonora (dB)</th>
+                                    <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressureLevel2'></input></td>
+                                </tr>
+                                <tr>
+                                    <th class='col' scope='row'>Presión Eficaz (Pascales)</th>
+                                    <td class='col'><input class='appTable appTable_Input appTable_Input--result' readonly id='soundPressure2'></input></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section>
+            </article>
+        <article>
             <div class='container'>
                 <div class='row'>
                     <div class='col'>
@@ -175,20 +174,60 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section class='plotContainer'>
+        </article>
+        <div class='plotContainer'>
             <div id='signalPlot'></div>
-        </section>
-        <section>
+        </div>
+        <article>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Seleccionar Medio de Propagación
+                    Seleccionar Medio de Propagación
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <button id='air' class="dropdown-item active" type="button">Aire</a>
-                  <button id='water' class="dropdown-item" type="button">Agua</a>
+                    <button id='air' class="dropdown-item active" type="button">Aire</button>
+                    <button id='water' class="dropdown-item" type="button">Agua</button>
+                    <button id='buenosAires' class="dropdown-item" type="button">Condiciones Actuales Buenos Aires</button>
+                    <button id='userVariables' class="dropdown-item" type="button">Variables Usuario</button>
+                </div>
             </div>
+        </article>
+        <section class='indexsection'>
+            <article>
+                <h2>Definición de Variables Acústicas</h2>
+                <p class='para'>Aquí puedes definir la velocidad del sonido, la presión y la potencia de referencia a utilizar en los cálculos a realizar. Una vez definidos, los puedes seleccionar desde el menú desplegable "Seleccionar Medio de Propagación", seleccionando la opción "Variables Usuario".</p>
+            </article>
         </section>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Velocidad del Sonido en el medio (m/s)</th>
+                        <td>
+                            <input id='userSoundSpeed' placeholder="343"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Presión de Referencia (μPa)</th>
+                        <td>
+                            <input id='userReferencePressure' placeholder="20"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Potencia de Referencia (pW)</th>
+                        <td>
+                            <input id='userReferencePower' placeholder="1"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class='btngroup'>
+                                <button id='submitVars' class='btn btn-primary' >Guardar Valores</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <p><strong id='errorMessage'>Alguno de los valores ingresados no es correcto!</strong></p>
     </main>
     <footer>
         <ul class="socialMedia">

@@ -245,7 +245,7 @@ function calculateCallback() {
         y: signalSamples }],
         layout);
 
-        $('#signalPlot').slideDown("slow")
+        $('#signalPlot').slideDown("slow");
     }
 }
 
@@ -261,6 +261,12 @@ document.addEventListener("keyup", function(event) {
     }
 })
 
+//Variables de usuario predeterminadas (para el botón userVariables):
+
+let userSoundSpeed = 343;
+let userReferencePressure = 0.00002;
+let userReferencePower = 10**(-12);
+
 //Llamada a json con AJAX para seleccionar si se desea modificar el medio:
 
 $(document).ready(function(){
@@ -269,19 +275,53 @@ $(document).ready(function(){
             soundSpeed = parseInt(result[0].soundSpeed);
             referencePressure = parseFloat(result[0].referencePressure);
             referencePower = parseFloat(result[0].referencePower);
-            calculateCallback()
+            calculateCallback();
         }});
-        $('#air').addClass('active')
-        $('#water').removeClass('active')
+        $('#air').addClass('active');
+        $('#water').removeClass('active');
+        $('#buenosAires').removeClass('active');
+        $('#userVariables').removeClass('active');
     });
     $("#water").click(function(){
         $.ajax({url: "./data/variables.json", success: function(result){
             soundSpeed = parseInt(result[1].soundSpeed);
             referencePressure = parseFloat(result[1].referencePressure);
             referencePower = ((result[1].referencePressure)**2)/(result[1].density*result[1].soundSpeed);
-            calculateCallback()
+            calculateCallback();
         }});
-        $('#air').removeClass('active')
-        $('#water').addClass('active')
+        $('#air').removeClass('active');
+        $('#water').addClass('active');
+        $('#buenosAires').removeClass('active');
+        $('#userVariables').removeClass('active');
     });
+    $("#buenosAires").click(function(){
+        $.ajax({url: "./data/variables.json", success: function(result){
+            referencePressure = parseFloat(result[0].referencePressure);
+            referencePower = parseFloat(result[0].referencePower);
+        }});
+        $.ajax({url: "http://api.openweathermap.org/data/2.5/weather?id=3433955&appid=d3d34bb65620f96bf05067412ce15b4a", success: function(result){
+            soundSpeed = 20.05*Math.sqrt(parseFloat(result.main.temp));
+            calculateCallback();
+        }});
+        $('#air').removeClass('active');
+        $('#water').removeClass('active');
+        $('#buenosAires').addClass('active');
+        $('#userVariables').removeClass('active');
+    });
+    $("#userVariables").click(function(){
+        referencePressure = userReferencePressure;
+        referencePower = userReferencePower;
+        soundSpeed = userSoundSpeed;
+        calculateCallback();
+        $('#air').removeClass('active');
+        $('#water').removeClass('active');
+        $('#buenosAires').removeClass('active');
+        $('#userVariables').addClass('active');
+    });
+    $("#submitVars").click(function(){
+        userReferencePressure = parseFloat($('#userReferencePressure').val())*(10**(-6));
+        userReferencePower = parseFloat($('#userReferencePower').val())*(10**(-12));
+        userSoundSpeed = parseFloat($('#userSoundSpeed').val());
+    });
+
 });
