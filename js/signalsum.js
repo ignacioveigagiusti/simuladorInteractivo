@@ -239,18 +239,69 @@ function calculateCallback() {
             font: {size: 10},
             autosize: true,
         };
+        var config = {responsive: true}
         SIGNAL = document.getElementById('signalPlot');
         Plotly.newPlot( SIGNAL, [{
         x: timeVector,
         y: signalSamples }],
-        layout);
+        layout, config);
+
+        if ($(window).width()<400) {
+            var update = {
+                width: $('.indexsection').width(),
+                height: 300
+            };  
+        }
+        else if ($(window).width()<655) {
+            var update = {
+                width: $('.indexsection').width(),
+                height: 375
+            };  
+        }
+        else if ($(window).width()<755) {
+            var update = {
+                width: $('.indexsection').width(),
+                height: $('.indexsection').width()*0.65
+            };  
+        }
+        else{
+            var update = {
+                width: 700,
+                height: 450
+            };
+        }    
+        Plotly.relayout(SIGNAL, update);
 
         $('#signalPlot').slideDown("slow");
     }
 }
 
 window.onresize = function() {
-    Plotly.Plots.resize(SIGNAL);
+    if ($(window).width()<400) {
+        var update = {
+            width: $('.indexsection').width(),
+            height: 300
+        };  
+    }
+    else if ($(window).width()<655) {
+        var update = {
+            width: $('.indexsection').width(),
+            height: 375
+        };  
+    }
+    else if ($(window).width()<755) {
+        var update = {
+            width: $('.indexsection').width(),
+            height: $('.indexsection').width()*0.65
+        };  
+    }
+    else{
+        var update = {
+            width: 700,
+            height: 450
+        };
+    }    
+    Plotly.relayout(SIGNAL, update);
 };
 
 // Ejecutar con 'Enter'
@@ -267,7 +318,7 @@ let userSoundSpeed = 343;
 let userReferencePressure = 0.00002;
 let userReferencePower = 10**(-12);
 
-//Llamada a json con AJAX para seleccionar si se desea modificar el medio:
+//Llamadas con AJAX para seleccionar si se desea modificar el medio:
 
 $(document).ready(function(){
     $("#air").click(function(){
@@ -319,9 +370,146 @@ $(document).ready(function(){
         $('#userVariables').addClass('active');
     });
     $("#submitVars").click(function(){
-        userReferencePressure = parseFloat($('#userReferencePressure').val())*(10**(-6));
-        userReferencePower = parseFloat($('#userReferencePower').val())*(10**(-12));
-        userSoundSpeed = parseFloat($('#userSoundSpeed').val());
+        if (isNaN(parseFloat($('#userSoundSpeed').val())) || isNaN(parseFloat($('#userReferencePressure').val())) || isNaN(parseFloat($('#userReferencePower').val())) || parseFloat($('#userSoundSpeed').val())<=0 || parseFloat($('#userReferencePressure').val())<=0 || parseFloat($('#userReferencePower').val())<=0) {
+            if (isNaN(parseFloat($('#userSoundSpeed').val())) || parseFloat($('#userSoundSpeed').val())<=0) {
+                $("#userSoundSpeed").addClass('appTable_Input--error').hide().fadeIn('slow');
+            }
+            if (isNaN(parseFloat($('#userReferencePressure').val())) || parseFloat($('#userReferencePressure').val())<=0) {
+                $("#userReferencePressure").addClass('appTable_Input--error').hide().fadeIn('slow');
+            }
+            if (isNaN(parseFloat($('#userReferencePower').val())) || parseFloat($('#userReferencePower').val())<=0) {
+                $("#userReferencePower").addClass('appTable_Input--error').hide().fadeIn('slow');
+            }
+        }
+        else{
+            $("#userSoundSpeed").removeClass('appTable_Input--error').hide().fadeIn('slow');
+            $("#userReferencePressure").removeClass('appTable_Input--error').hide().fadeIn('slow');
+            $("#userReferencePower").removeClass('appTable_Input--error').hide().fadeIn('slow');
+            userReferencePressure = parseFloat($('#userReferencePressure').val())*(10**(-6));
+            userReferencePower = parseFloat($('#userReferencePower').val())*(10**(-12));
+            userSoundSpeed = parseFloat($('#userSoundSpeed').val());
+        }
     });
+});
 
+//Chequeo dinámico de correcciones de datos:
+
+$("#soundPower1").change(function(){
+    if (parseFloat($('#soundPower1').val())>=0) {
+        $("#soundPower1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#distance1").change(function(){
+    if (parseFloat($('#distance1').val())>0) {
+        $("#distance1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#Qfactor1").change(function(){
+    if (parseFloat($('#Qfactor1').val())>0) {
+        $("#Qfactor1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#timeDelay1").change(function(){
+    if (parseFloat($('#timeDelay1').val())>=0) {
+        $("#timeDelay1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#frequency1signal1").change(function(){
+    if (parseFloat($('#frequency1signal1').val())>0) {
+        $("#frequency1signal1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency1signal1').val()<=0){
+        $('#frequency1signal1').val('')
+    }    
+});
+$("#frequency2signal1").change(function(){
+    if (parseFloat($('#frequency2signal1').val())>0) {
+        $("#frequency2signal1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency2signal1').val()<=0){
+        $('#frequency2signal1').val('')
+    }    
+});
+$("#frequency3signal1").change(function(){
+    if (parseFloat($('#frequency3signal1').val())>0) {
+        $("#frequency3signal1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency3signal1').val()<=0){
+        $('#frequency3signal1').val('')
+    }    
+});
+$("#frequency4signal1").change(function(){
+    if (parseFloat($('#frequency4signal1').val())>0) {
+        $("#frequency4signal1").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency4signal1').val()<=0){
+        $('#frequency4signal1').val('')
+    }    
+});
+$("#soundPower2").change(function(){
+    if (parseFloat($('#soundPower2').val())>=0) {
+        $("#soundPower2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#distance2").change(function(){
+    if (parseFloat($('#distance2').val())>0) {
+        $("#distance2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#Qfactor2").change(function(){
+    if (parseFloat($('#Qfactor2').val())>0) {
+        $("#Qfactor2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#timeDelay2").change(function(){
+    if (parseFloat($('#timeDelay2').val())>=0) {
+        $("#timeDelay2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#frequency1signal2").change(function(){
+    if (parseFloat($('#frequency1signal2').val())>0) {
+        $("#frequency1signal2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency1signal2').val()<=0){
+        $('#frequency1signal2').val('')
+    }    
+});
+$("#frequency2signal2").change(function(){
+    if (parseFloat($('#frequency2signal2').val())>0) {
+        $("#frequency2signal2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency2signal2').val()<=0){
+        $('#frequency2signal2').val('')
+    }    
+});
+$("#frequency3signal2").change(function(){
+    if (parseFloat($('#frequency3signal2').val())>0) {
+        $("#frequency3signal2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency3signal2').val()<=0){
+        $('#frequency3signal2').val('')
+    }    
+});
+$("#frequency4signal2").change(function(){
+    if (parseFloat($('#frequency4signal2').val())>0) {
+        $("#frequency4signal2").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+    if ($('#frequency4signal2').val()<=0){
+        $('#frequency4signal2').val('')
+    }    
+});
+$("#userSoundSpeed").change(function(){
+    if (parseFloat($('#userSoundSpeed').val())>0) {
+        $("#userSoundSpeed").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#userReferencePressure").change(function(){
+    if (parseFloat($('#userReferencePressure').val())>0) {
+        $("#userReferencePressure").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
+});
+$("#userReferencePower").change(function(){
+    if (parseFloat($('#userReferencePower').val())>0) {
+        $("#userReferencePower").removeClass('appTable_Input--error').hide().fadeIn('fast');
+    }
 });

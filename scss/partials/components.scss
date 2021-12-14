@@ -198,15 +198,12 @@ iframe{
 }
 
 .plotContainer{
-    overflow: auto;
     display: flex;
     align-self: center;
-    max-width: 80vw;
 }
 
 #signalPlot {
     display: none;
-    min-width: 800px;
 }
 
 /*Nosotros*/

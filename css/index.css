@@ -272,14 +272,11 @@ iframe {
   font-weight: bold; }
 
 .plotContainer {
-  overflow: auto;
   display: flex;
-  align-self: center;
-  max-width: 80vw; }
+  align-self: center; }
 
 #signalPlot {
-  display: none;
-  min-width: 800px; }
+  display: none; }
 
 /*Nosotros*/
 form fieldset {

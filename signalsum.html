@@ -58,7 +58,7 @@
                 <p class='para para--note'><strong>Factor de Directividad:</strong> Refiere a qué tan direccional es la fuente. Un Q=1 sería una fuente omnidireccional, Q=2 una fuente apoyada en el piso, Q=3 una fuente apoyada en el piso contra una pared y mientras sigue aumentando el Q, más direccional será la fuente.</p>
                 <p class='para para--note'><strong>Retraso Inicial:</strong> Cuánto tiempo tarda la fuente en comenzar a emitir.</p>
                 <p class='para para--note'><strong>Frecuencias:</strong> Se pueden aclarar hasta cuatro frecuencias que conformen la señal. Recordar que los seres humanos en general escuchamos frecuencias entre 20 y 20000 Hz.</p>
-                <p class='para para--note'><strong>Medio de Propagación:</strong> La velocidad del sonido suele ser 343 m/s en condiciones normales de temperatura y presión atmosférica, mientras que la presión de referencia en el aire es de 20 μPa. Si el medio de propagación fuese agua, la velocidad sería de 1480 m/s y la presión de referencia 1 μPa. También se puede elegir calcular utilizando las condiciones atmosféricas actuales de la Ciudad Autónoma de Buenos Aires, ya que la velocidad del sonido depende de la temperatura del medio.</p>
+                <p class='para para--note'><strong>Medio de Propagación:</strong> La velocidad del sonido suele ser 343 m/s en condiciones normales de temperatura y presión atmosférica, mientras que la presión de referencia en el aire es de 20 μPa. Si el medio de propagación fuese agua, la velocidad sería de 1480 m/s y la presión de referencia 1 μPa. También se puede elegir calcular utilizando las condiciones atmosféricas actuales de la Ciudad Autónoma de Buenos Aires, ya que la velocidad del sonido depende de la temperatura del medio, o ingresar valores en la tabla que se encuentra debajo de la calculadora.</p>
             </article>
         </section>
             <article>
@@ -87,10 +87,10 @@
                                     <th class='col' scope='row'>Frecuencias</th>
                                     <td class='col'>
                                         <div class='appTable appTable_frequencyContainer'>
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency1signal1' placeholder="0"></input>
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency2signal1' placeholder="0"></input>
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency3signal1' placeholder="0"></input>  
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0.001" id='frequency4signal1' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency1signal1' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency2signal1' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency3signal1' placeholder="0"></input>  
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min="0" id='frequency4signal1' placeholder="0"></input>
                                         </div>    
                                     </td>
                                 </tr>
@@ -131,10 +131,10 @@
                                     <th class='col' scope='row'>Frecuencias</th>
                                     <td class='col'>
                                         <div class='appTable appTable_frequencyContainer'>
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency1signal2' placeholder="0"></input>
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency2signal2' placeholder="0"></input>
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency3signal2' placeholder="0"></input>    
-                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0.001' id='frequency4signal2' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency1signal2' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency2signal2' placeholder="0"></input>
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency3signal2' placeholder="0"></input>    
+                                            <input class='appTable appTable_Input appTable_Input--f' type='number' min='0' id='frequency4signal2' placeholder="0"></input>
                                         </div>    
                                     </td>
                                 </tr>
@@ -177,7 +177,7 @@
         </article>
         <div class='plotContainer'>
             <div id='signalPlot'></div>
-        </div>
+        </div> 
         <article>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
