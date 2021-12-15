@@ -346,10 +346,8 @@ $(document).ready(function(){
         $('#userVariables').removeClass('active');
     });
     $("#buenosAires").click(function(){
-        $.ajax({url: "./data/variables.json", success: function(result){
-            referencePressure = parseFloat(result[0].referencePressure);
-            referencePower = parseFloat(result[0].referencePower);
-        }});
+        referencePressure = 0.00002;
+        referencePower = 10**(-12);
         $.ajax({url: "http://api.openweathermap.org/data/2.5/weather?id=3433955&appid=d3d34bb65620f96bf05067412ce15b4a", success: function(result){
             soundSpeed = 20.05*Math.sqrt(parseFloat(result.main.temp));
             calculateCallback();
