@@ -72,21 +72,15 @@ function noncorrelatedsum(spl1,spl2){
     return noncorsumalert;
 }
 
-/*function correlatedsumDirect(spl1,spl2,phasediff){
-    corsum = correlatedsum(spl1,spl2,phasediff);
-    let sumResult = document.getElementById('sumResult');
-    let corSumResult = document.createElement("corSumResult");
-    corSumResult.innerHTML = '<input readonly>' + corsum + '</input>';
-    sumResult.appendChild(corSumResult);
+let CalculateRMS = function (arr) {
+  
+    let Squares = arr.map((val) => (val*val));
+  
+    let Sum = Squares.reduce((acum, val) => (acum + val));
+  
+    Mean = Sum/arr.length;
+    return Math.sqrt(Mean);
 }
-
-function noncorrelatedsumDirect(spl1,spl2){
-    noncorsum = noncorrelatedsum(spl1,spl2);
-    let sumResult = document.getElementById('sumResult');
-    let nonCorSumResult = document.createElement("nonCorSumResult");
-    nonCorSumResult.innerHTML = '<input readonly>' + noncorcum + '</input>';
-    sumResult.appendChild(nonCorSumResult);
-}*/
 
 //Funcion comparadora para poder ordenar ascendentemente arrays numéricos con el método sort
 function compareNumbers(a, b) {
