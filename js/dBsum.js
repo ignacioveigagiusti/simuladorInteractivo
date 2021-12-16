@@ -53,3 +53,21 @@ function nonCorrelatedSumButtonCallback() {
     $('#sumResult').val(noncorrelatedsum(soundPressureLevel1,soundPressureLevel2));
     }
 }
+
+//Chequeo dinámico de correcciones de datos:
+
+$("#soundPLevel1").change(function(){
+    if (parseFloat($('#soundPLevel1').val())>=0) {
+        $("#soundPLevel1").css({'border-color':'','border-style':''}).hide().fadeIn('fast');
+    }
+});
+$("#soundPLevel2").change(function(){
+    if (parseFloat($('#soundPLevel2').val())>=0) {
+        $("#soundPLevel2").css({'border-color':'','border-style':''}).hide().fadeIn('fast');
+    }
+});
+$("#phaseDifference").change(function(){
+    if (parseFloat($('#phaseDifference').val())>(-360) || parseFloat($('#phaseDifference').val())<(360)) {
+        $("#phaseDifference").css({'border-color':'','border-style':''}).hide().fadeIn('fast');
+    }
+});
