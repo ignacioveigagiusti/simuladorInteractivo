@@ -18,7 +18,7 @@ for (let i = 0; i < samplerate; i++) {
     timeVector.push((timeStop-timeStart)*(i/(samplerate-1)));
 }
 
-//función Callback para traer señales anteriores
+//Función Callback para traer señales anteriores
 
 let retrieveLastSignal = $("#retrieveLastSignal");
 retrieveLastSignal.click(retrieveLastSignalCallback);
@@ -261,8 +261,6 @@ function calculateCallback() {
 
         rmsPressure = CalculateRMS(signalSamples);
 
-        console.log(signalPeff);
-
         //Grafico
         var layout = { 
             title: 'Suma de Señales',
@@ -312,7 +310,7 @@ let userSoundSpeed = 343;
 let userReferencePressure = 0.00002;
 let userReferencePower = 10**(-12);
 
-//Llamadas con AJAX para seleccionar si se desea modificar el medio:
+//Selector de Medios (Aquí se encuentran las llamadas AJAX):
 
 $(document).ready(function(){
     $("#air").click(function(){
