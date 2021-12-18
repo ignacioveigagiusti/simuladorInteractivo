@@ -36,13 +36,14 @@ nonCorrelatedSumButton.click(nonCorrelatedSumButtonCallback);
 function nonCorrelatedSumButtonCallback() { 
     let soundPressureLevel1 = parseFloat($("#soundPLevel1").val())
     let soundPressureLevel2 = parseFloat($("#soundPLevel2").val())
+    $("#phaseDifference").css({'border-color':'','border-style':''});
     if (isNaN(soundPressureLevel1) || isNaN(soundPressureLevel2)) {
         $("#errorMessage").slideDown('slow');
         if (isNaN(soundPressureLevel1)) {
-            $("#soundPLevel1").css({'border-color':'red','border-style':'solid'});
+            $("#soundPLevel1").css({'border-color':'red','border-style':'solid'}).hide().fadeIn();
         }
         if (isNaN(soundPressureLevel2)) {
-            $("#soundPLevel2").css({'border-color':'red','border-style':'solid'});
+            $("#soundPLevel2").css({'border-color':'red','border-style':'solid'}).hide().fadeIn();
         }
     }
     else{

@@ -102,7 +102,7 @@ function calculateCallback() {
     
     //Chequeo de datos
     if (isNaN(soundPower1) || isNaN(distance1) || isNaN(Qfactor1) || isNaN(timeDelay1) || isNaN(soundPower2) || isNaN(distance2) || isNaN(Qfactor2) || isNaN(timeDelay2) || soundPower1<0 || distance1<=0 || Qfactor1<=0 || soundPower2<0 || distance2<=0 || Qfactor2<=0) {
-        $("#signalSumTag").html('Alguno de los valores ingresados no es correcto!').hide().fadeIn('slow');
+        $("#signalSumTag").html('Alguno de los valores ingresados no es válido!').hide().fadeIn('slow');
         $("#signalSumTag").css('color','crimson');
         $("#signalSumResult").css('display','none');
         if (isNaN(soundPower1) || soundPower1<0){
@@ -361,6 +361,7 @@ $(document).ready(function(){
     });
     $("#submitVars").click(function(){
         if (isNaN(parseFloat($('#userSoundSpeed').val())) || isNaN(parseFloat($('#userReferencePressure').val())) || isNaN(parseFloat($('#userReferencePower').val())) || parseFloat($('#userSoundSpeed').val())<=0 || parseFloat($('#userReferencePressure').val())<=0 || parseFloat($('#userReferencePower').val())<=0) {
+            $("#errorMessage").slideDown('slow');
             if (isNaN(parseFloat($('#userSoundSpeed').val())) || parseFloat($('#userSoundSpeed').val())<=0) {
                 $("#userSoundSpeed").addClass('appTable_Input--error').hide().fadeIn('slow');
             }
@@ -372,6 +373,7 @@ $(document).ready(function(){
             }
         }
         else{
+            $("#errorMessage").slideUp('slow');
             $("#userSoundSpeed").removeClass('appTable_Input--error').hide().fadeIn('slow');
             $("#userReferencePressure").removeClass('appTable_Input--error').hide().fadeIn('slow');
             $("#userReferencePower").removeClass('appTable_Input--error').hide().fadeIn('slow');
