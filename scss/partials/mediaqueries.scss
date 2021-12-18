@@ -111,7 +111,7 @@
 
     .header{
         grid-template-columns: 100px auto; 
-        grid-template-rows: 1fr 0.75fr;
+        grid-template-rows: 1fr 1fr;
         grid-template-areas: 'logo pagetitle'
                             'logo navbar';
         gap: 1vw;

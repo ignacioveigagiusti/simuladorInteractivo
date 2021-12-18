@@ -45,7 +45,7 @@ html {
 
 h1 {
   font-size: 2rem;
-  line-height: 4rem; }
+  line-height: 2rem; }
 
 body {
   display: grid;
@@ -313,7 +313,7 @@ h1 {
   font-weight: bold;
   overflow: hidden;
   font-size: 2rem;
-  line-height: 4rem; }
+  line-height: 2rem; }
 
 h2 {
   text-align: center;
@@ -691,7 +691,7 @@ article {
     width: 100%; }
   .header {
     grid-template-columns: 100px auto;
-    grid-template-rows: 1fr 0.75fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 'logo pagetitle' 'logo navbar';
     gap: 1vw; }
     .header .header__pagetitle {
