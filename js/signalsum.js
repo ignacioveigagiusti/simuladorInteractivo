@@ -266,6 +266,22 @@ function calculateCallback() {
             title: 'Suma de Señales',
             font: {size: 10},
             autosize: true,
+            yaxis: {
+                title: 'Presión Sonora [Pa]',
+                titlefont: {
+                  family: 'Arial, sans-serif',
+                  size: 18,
+                  color: 'lightgrey'
+                },
+            },
+            xaxis: {
+                title: 'Tiempo [s]',
+                titlefont: {
+                  family: 'Arial, sans-serif',
+                  size: 18,
+                  color: 'lightgrey'
+                },
+            }
         };
         var config = {responsive: true}
         SIGNAL = document.getElementById('signalPlot');
